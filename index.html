@@ -35,9 +35,7 @@
 
     /* CTA */
     .cta-card{position:relative;margin-top:16px;padding:clamp(16px,4.5vw,28px) clamp(14px,4vw,22px);text-align:center;border-radius:20px;border:1px solid rgba(255,255,255,.14);
-      background:radial-gradient(80% 120% at 0% 0%,rgba(106,0,255,.18),transparent 60%),
-                 radial-gradient(80% 120% at 100% 0%,rgba(63,124,255,.18),transparent 60%),
-                 linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      background:radial-gradient(80% 120% at 0% 0%,rgba(106,0,255,.18),transparent 60%),radial-gradient(80% 120% at 100% 0%,rgba(63,124,255,.18),transparent 60%),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
       box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
     .cta-card::before{content:"";position:absolute;inset:-2px;border-radius:inherit;background:linear-gradient(135deg,rgba(106,0,255,.55),rgba(63,124,255,.55));filter:blur(18px);opacity:.25;z-index:-1}
     .lead{margin:0 auto clamp(10px,3vw,18px);max-width:860px;font-size:clamp(15px,4.1vw,19px);line-height:1.35;font-weight:800}
@@ -47,18 +45,21 @@
     .btn.cta svg{width:18px;height:18px}
     .micro{margin:10px 0 0;color:var(--muted);font-size:clamp(11px,3vw,12px)}
 
-    .section-title{color:#c9d3f3;font-weight:800;letter-spacing:.3px;margin:18px 4px 8px;font-size:clamp(18px,5.2vw,24px)}
+    .section-title{color:#c9d3f3;font-weight:800;letter-spacing:.3px;margin:22px 4px 10px;font-size:clamp(18px,5.2vw,24px)}
 
     /* Лента маркетплейса */
-    .scroller{position:relative}
+    .market{margin-top:6px}
+    .scroller{position:relative;margin-inline:0}
     .rail{display:flex;gap:12px;overflow-x:auto;padding:6px 4px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x;scroll-behavior:smooth}
     .rail::-webkit-scrollbar{height:10px}
     .rail::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:10px}
     .rail::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:10px}
+
     .fade-edge{position:absolute;top:0;bottom:0;width:44px;pointer-events:none;opacity:0;transition:opacity .18s}
     .fade-left{left:0;background:linear-gradient(to right,rgba(10,12,18,.85),rgba(10,12,18,0))}
     .fade-right{right:0;background:linear-gradient(to left,rgba(10,12,18,.85),rgba(10,12,18,0))}
     .fade-edge.show{opacity:1}
+
     .arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:40px;height:44px;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,var(--wb1),var(--wb2));color:#fff;border:1px solid rgba(255,255,255,.25);box-shadow:0 10px 22px rgba(122,0,204,.35);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .18s,transform .12s}
     .arrow svg{width:18px;height:18px}
     .arrow:active{transform:translateY(-50%) scale(.98)}
@@ -66,38 +67,44 @@
     .arrow.left{left:6px}
     .arrow.right{right:6px}
 
-    /* Базовый размер карточки (планшет/десктоп) */
+    /* Карточки */
     .product{display:flex;flex-direction:column;scroll-snap-align:start;
-      min-width:clamp(205px,58vw,260px);max-width:clamp(205px,58vw,260px);
-      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--stroke);border-radius:16px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.3)}
+      min-width:240px;max-width:240px;
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid var(--stroke);border-radius:16px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.3)}
     .product .pic{position:relative;width:100%;aspect-ratio:3/4;background:#0f1320}
     .product .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .product .body{display:flex;flex-direction:column;padding:10px 10px 12px;flex:1}
-    .product .name{font-weight:800;font-size:clamp(13px,3.6vw,15px);line-height:1.25;margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+    .product .name{font-weight:800;font-size:15px;line-height:1.25;margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
     .product .actions{margin-top:auto;display:flex}
-    .btn.wb{width:100%;padding:12px 14px;border-radius:12px;font-size:clamp(13px,3.8vw,14px);background:linear-gradient(135deg,var(--wb1),var(--wb2));color:#fff;border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 22px rgba(122,0,204,.35)}
+    .btn.wb{width:100%;padding:12px 14px;border-radius:12px;font-size:14px;background:linear-gradient(135deg,var(--wb1),var(--wb2));color:#fff;border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 22px rgba(122,0,204,.35)}
     .btn.wb:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(122,0,204,.45)}
 
     .product.promo .pic{background:
       radial-gradient(120% 100% at 10% 0%,rgba(106,0,255,.45),transparent 60%),
       radial-gradient(120% 100% at 100% 20%,rgba(63,124,255,.45),transparent 60%),
       linear-gradient(135deg,#0b1020 0%,#10152b 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px}
-    .promo-text{color:#e8ecff;font-weight:800;letter-spacing:.2px;line-height:1.25;font-size:clamp(13px,3.6vw,15px)}
-    .promo-text small{display:block;color:#b8c2e8;font-weight:700;margin-top:6px;font-size:clamp(11px,3.2vw,13px)}
+    .promo-text{color:#e8ecff;font-weight:800;letter-spacing:.2px;line-height:1.25}
+    .promo-text small{display:block;color:#b8c2e8;font-weight:700;margin-top:6px}
 
-    .btn.wb-outline{border:2px solid transparent;background:linear-gradient(#0a0c12,#0a0c12) padding-box,linear-gradient(135deg,var(--wb1),var(--wb2)) border-box;color:#fff;padding:12px 18px;border-radius:14px;font-weight:800;font-size:clamp(13px,3.8vw,15px)}
+    .btn.wb-outline{border:2px solid transparent;background:linear-gradient(#0a0c12,#0a0c12) padding-box,linear-gradient(135deg,var(--wb1),var(--wb2)) border-box;color:#fff;padding:12px 18px;border-radius:14px;font-weight:800}
 
     .footer{color:var(--muted);font-size:12px;padding:20px 20px 28px;text-align:center}
 
-    /* === Мобильный «4 карточки в кадре» (до 480px) === */
-    @media (max-width:480px){
-      .section-title{margin-top:14px}
-      .rail{gap:8px;padding:6px 2px 10px}
-      .arrow{width:34px;height:38px}
-      /* ширина 4-х карточек в ширину, учитывая паддинги .wrap (по 20px) и 3 промежутка по 8px */
-      .product{min-width:calc((100vw - 40px - 24px)/4);max-width:calc((100vw - 40px - 24px)/4)}
-      .product .name{-webkit-line-clamp:3;font-size:11px}
-      .btn.wb{font-size:11px;padding:9px 10px;border-radius:10px}
+    /* === МОБАЙЛ-КОМПАКТ: показываем ~4 карточки в первый экран === */
+    @media (max-width:520px){
+      .scroller{margin-inline:-14px}
+      .rail{padding:6px 14px 10px;gap:8px}
+      .arrow{width:30px;height:34px}
+      .fade-edge{width:26px}
+      .product{
+        min-width:calc((100vw - 28px - 3*8px)/4); /* 28 = паддинги ленты слева/справа */
+        max-width:calc((100vw - 28px - 3*8px)/4);
+        border-radius:12px
+      }
+      .product .body{padding:8px}
+      .product .name{font-size:11px;-webkit-line-clamp:2;margin-bottom:6px}
+      .btn.wb{font-size:10px;padding:8px 6px;border-radius:10px}
     }
   </style>
 </head>
@@ -147,22 +154,27 @@
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/83d892950724c66f0f660af181475067eb89fc2a447d20dd494a415858555cf2.jpg" alt="Сим карта МТС Полный Безлимитный интернет без ограничений"></div>
             <div class="body"><h3 class="name">Сим карта МТС Полный Безлимитный интернет без ограничений</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/300618366/detail.aspx?size=456790759" target="_blank" rel="noopener">Заказать на WB</a></div></div>
           </article>
+
           <article class="product">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/c8d262a268e6715acbf9e718f99eb8b67236887bfe1f27ef127d9efd5fcd2901.jpg" alt="Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением"></div>
             <div class="body"><h3 class="name">Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/300618359/detail.aspx?size=456790752" target="_blank" rel="noopener">Заказать на WB</a></div></div>
           </article>
+
           <article class="product">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/114c6f07c149efec106ccd1784193c8e21bad1e7f559e98203d5fdbc29e12d23.jpg" alt="Сим карта Т2. Безлимитный интернет с ограничением"></div>
             <div class="body"><h3 class="name">Сим карта Т2. Безлимитный интернет с ограничением</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/300619906/detail.aspx?size=456792371" target="_blank" rel="noopener">Заказать на WB</a></div></div>
           </article>
+
           <article class="product">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/7859b8c656f918748fa99c9ee5cb4659f08e5ffc9e46714513a7c98ad5db3b05.jpg" alt="Сим карта Билайн. Безлимитный интернет с ограничением"></div>
             <div class="body"><h3 class="name">Сим карта Билайн. Безлимитный интернет с ограничением</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/300618361/detail.aspx?size=456790754" target="_blank" rel="noopener">Заказать на WB</a></div></div>
           </article>
+
           <article class="product">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/065a652c8e030f6b1a1ebc685775fbd4db74bf870c92a001abea8f338aa536a1.jpg" alt="Сим карта Мегафон. Официальный тариф"></div>
             <div class="body"><h3 class="name">Сим карта Мегафон. Официальный тариф</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/432671801/detail.aspx?targetUrl=EX" target="_blank" rel="noopener">Заказать на WB</a></div></div>
           </article>
+
           <article class="product promo">
             <div class="pic"><div class="promo-text">Смотреть всю нашу линейку тарифов<br>на Wildberries<small>Нажмите — откроется полный список</small></div></div>
             <div class="body"><h3 class="name">Вся линейка тарифов — на Wildberries</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">Перейти на WB</a></div></div>
@@ -171,9 +183,7 @@
       </div>
 
       <div class="wrap" style="text-align:center;margin-top:8px">
-        <a class="btn wb-outline" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">
-          Смотреть всю нашу линейку тарифов на Wildberries
-        </a>
+        <a class="btn wb-outline" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">Смотреть всю нашу линейку тарифов на Wildberries</a>
       </div>
     </section>
   </main>
@@ -181,16 +191,17 @@
   <footer class="footer"><small>© 2025 SIMHUB · Поддержка 7/7</small></footer>
 
   <script>
-    // Внешние ссылки в новой вкладке
+    // Внешние ссылки — в новой вкладке
     document.querySelectorAll('a[href^="http"]').forEach(a=>{ if(!a.target){ a.target="_blank"; a.rel="noopener"; } });
 
-    // Навигация ленты (с допусками для iOS)
+    // Навигация ленты + авто-скрытие стрелок
     const rail=document.getElementById('rail');
     const left=document.querySelector('.arrow.left');
     const right=document.querySelector('.arrow.right');
     const fadeL=document.querySelector('.fade-left');
     const fadeR=document.querySelector('.fade-right');
     const TOL=20; let stopTimer;
+
     const getMax=()=>Math.max(0,rail.scrollWidth-rail.clientWidth);
     function stick(){const m=getMax(); if(rail.scrollLeft<TOL) rail.scrollLeft=0; if(rail.scrollLeft>m-TOL) rail.scrollLeft=m;}
     function upd(){const m=getMax(),x=rail.scrollLeft,over=m>TOL,at0=x<=TOL,atEnd=x>=m-TOL;
@@ -199,15 +210,27 @@
       fadeL.classList.toggle('show', over && !at0);
       fadeR.classList.toggle('show', over && !atEnd);
     }
-    function step(dir){const d=Math.max(220,rail.clientWidth*.85)*dir; rail.scrollBy({left:d,behavior:'smooth'}); setTimeout(()=>{stick();upd();},380);}
-    right.addEventListener('click',()=>step(1)); left.addEventListener('click',()=>step(-1));
+
+    function cardStep(){
+      const first=rail.querySelector('.product');
+      if(!first) return Math.max(220, rail.clientWidth*.85);
+      const g=parseFloat(getComputedStyle(rail).columnGap||getComputedStyle(rail).gap||'12');
+      return first.getBoundingClientRect().width + g; // шаг ≈ ширина карточки + gap
+    }
+    function step(dir){ rail.scrollBy({left: cardStep()*2*dir, behavior:'smooth'}); setTimeout(()=>{stick();upd();},380); }
+
+    right.addEventListener('click',()=>step(1));
+    left.addEventListener('click',()=>step(-1));
+
     rail.addEventListener('scroll',()=>{ clearTimeout(stopTimer); stopTimer=setTimeout(()=>{stick();upd();},120); },{passive:true});
+
     function init(){ rail.scrollTo({left:0,behavior:'auto'}); stick(); upd();
       rail.querySelectorAll('img').forEach(img=>{ if(!img.complete) img.addEventListener('load',()=>{stick();upd();},{once:true}); });
       requestAnimationFrame(upd); setTimeout(upd,120); setTimeout(upd,400);
     }
     window.addEventListener('load',init); window.addEventListener('pageshow',init);
-    window.addEventListener('resize',()=>{stick();upd();}); window.addEventListener('orientationchange',()=>setTimeout(()=>{stick();upd();},300));
+    window.addEventListener('resize',()=>{stick();upd();});
+    window.addEventListener('orientationchange',()=>setTimeout(()=>{stick();upd();},300));
   </script>
 </body>
 </html>

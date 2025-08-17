@@ -4,56 +4,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>bart.id sim — альтернатива · Активация SIM-карты | SIMHUB</title>
-  <meta name="description" content="Искали bart.id sim? Здесь — активация SIM-карты и ссылки на Wildberries и OZON. SIMHUB — независимый сервис.">
+  <meta name="description" content="Искали bart.id sim? Здесь — активация SIM-карты и наша линейка тарифов с быстрыми ссылками на Wildberries. SIMHUB — независимый сервис.">
   <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://bartid.id/SIM/">
+  <link rel="canonical" href="https://tieeefdr.github.io/simhub-site/SIM/">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Активация SIM-карты — SIMHUB">
-  <meta property="og:description" content="Активация SIM-карты, купленной на Wildberries и OZON.">
+  <meta property="og:description" content="Активация SIM-карты, купленной на Wildberries и OZON. Плюс мини-маркетплейс тарифов.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bartid.id/SIM/">
+  <meta property="og:url" content="https://tieeefdr.github.io/simhub-site/SIM/">
   <meta property="og:image" content="https://files.salebot.pro/uploads/message_files/f9fc0e5f2651ef2489fe06a329000c4f1c2c315974d856425a015c96c95f4c68.jpg">
 
-  <!-- Акцентный шрифт для lead-текста -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
 
-  <!-- Favicon (встроенный SVG) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%236a00ff'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='64' fill='white'%3ES%3C/text%3E%3C/svg%3E">
-
-  <!-- FAQ JSON-LD для расширенного сниппета -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {
-        "@type":"Question",
-        "name":"Это тот же сайт, что и bart.id/SIM?",
-        "acceptedAnswer":{"@type":"Answer","text":"Нет. SIMHUB — независимый сервис. Упоминание «bart.id sim» используется, чтобы пользователи нашли альтернативную страницу активации."}
-      }
-    ]
-  }
-  </script>
-
   <style>
-    /* ===== Base ===== */
     *{box-sizing:border-box} html,body{margin:0;padding:0}
     :root{
       --bg:#0a0c12; --text:#ecf1ff; --muted:#a7b6d9;
       --card:rgba(255,255,255,.06); --stroke:rgba(255,255,255,.12);
       --brand:#6a00ff; --brand2:#3f7cff; --cta:#16c172;
+      --wb1:#7a00cc; --wb2:#ff38a2;
     }
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,'Noto Sans',sans-serif;color:var(--text);background:var(--bg);min-height:100vh}
 
-    /* ===== Background (сине-фиолетовый градиент) ===== */
     .bg{position:fixed;inset:0;z-index:-1;background:
       radial-gradient(1200px 600px at 10% -10%, rgba(106,0,255,.25), transparent 60%),
       radial-gradient(800px 500px at 100% 0%, rgba(63,124,255,.18), transparent 55%),
       radial-gradient(700px 600px at 20% 100%, rgba(106,0,255,.15), transparent 55%),
       linear-gradient(135deg,#0b1020 0%, #10152b 100%); filter:saturate(110%)}
 
-    /* ===== Layout ===== */
     .wrap{max-width:980px;margin:0 auto;padding:20px}
     .header{padding-top:28px;padding-bottom:6px}
     .brand{display:flex;align-items:center;gap:16px}
@@ -65,41 +43,73 @@
     .titles h1{margin:0;font-size:32px;letter-spacing:.2px}
     .subtitle{margin:.25rem 0 0;font-size:15px;color:var(--muted)}
 
-    /* ===== Card ===== */
-    .card{border:1px solid var(--stroke);
+    .card{
+      border:1px solid var(--stroke);
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius:18px;padding:22px 22px 18px;box-shadow:0 15px 50px rgba(0,0,0,.25);backdrop-filter:blur(8px)}
+      border-radius:18px;padding:22px 22px 18px;
+      box-shadow:0 15px 50px rgba(0,0,0,.25);backdrop-filter:blur(8px)
+    }
     .hero{margin-top:22px;text-align:center}
     .lead{margin:0 auto 16px;max-width:760px;color:var(--text);font-size:18px; font-family:'Manrope', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
     .micro{margin:8px 0 0;color:var(--muted);font-size:12px}
 
-    /* ===== Buttons ===== */
     .btn{display:inline-flex;align-items:center;justify-content:center;
       padding:14px 18px;border-radius:14px;gap:10px;text-decoration:none;
       font-weight:800;letter-spacing:.2px;border:1px solid transparent;
       transition:transform .08s ease, box-shadow .2s ease, background .2s ease}
     .btn.cta{background:linear-gradient(90deg,var(--cta),#23d287);color:#05270f;box-shadow:0 10px 24px rgba(22,193,114,.35)}
     .btn.cta:hover{transform:translateY(-1px);box-shadow:0 14px 26px rgba(22,193,114,.45)}
+    .btn.wb{background:linear-gradient(135deg,var(--wb1),var(--wb2));color:#fff;border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 22px rgba(122,0,204,.35)}
+    .btn.wb:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(122,0,204,.45)}
     .btn.ghost{background:transparent;color:var(--text);border-color:var(--stroke)}
-    .btn.ghost:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.25)}
-    .wrap-more{margin:24px auto}
-    .muted{color:var(--muted);font-size:16px;margin:0 0 12px 4px;text-align:center}
-    .btn-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .btn.wb-outline{background:transparent;color:#ffffff; border:1px solid rgba(255,255,255,.3); box-shadow:0 0 0 2px rgba(122,0,204,.25) inset; padding:14px 22px}
 
-    /* ===== Tiles (WB / OZON) ===== */
-    .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-    .tile{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--stroke);border-radius:14px;background:rgba(255,255,255,.03)}
-    .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-weight:900}
-    .ico-wb{background:linear-gradient(135deg,#8a2be2,#ff3fa4)} /* Wildberries */
-    .ico-oz{background:linear-gradient(135deg,#0066ff,#00b2ff)} /* OZON */
-    .ico span{font-size:18px}
-    .tile .meta{display:flex;flex-direction:column}
-    .tile .title{font-weight:800}
+    .section-title{color:#c9d3f3;font-weight:800;letter-spacing:.3px;margin:28px 4px 12px}
 
-    /* Footer */
+    .market{margin-top:6px}
+    .rail{
+      display:flex; gap:14px; overflow-x:auto; padding:6px 4px 14px;
+      scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+      mask-image: linear-gradient(to right, transparent 0, rgba(0,0,0,.9) 32px, rgba(0,0,0,.9) calc(100% - 32px), transparent 100%);
+    }
+    .rail::-webkit-scrollbar{height:10px}
+    .rail::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:10px}
+    .rail::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:10px}
+
+    .product{
+      display:flex; flex-direction:column;
+      scroll-snap-align:start; min-width:270px; max-width:270px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--stroke); border-radius:16px; overflow:hidden;
+      box-shadow:0 12px 28px rgba(0,0,0,.3)
+    }
+    .product .pic{position:relative; width:100%; aspect-ratio:3/4; background:#0f1320}
+    .product .pic img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+    .product .body{display:flex; flex-direction:column; padding:12px 12px 14px; flex:1}
+    .product .name{
+      font-weight:800; font-size:15px; line-height:1.25; margin:0 0 12px;
+      display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden
+    }
+    .product .actions{margin-top:auto; display:flex}
+    .product .btn{width:100%; padding:12px 14px; border-radius:12px; font-size:14px}
+
+    .product.promo .pic{
+      background:
+        radial-gradient(120% 100% at 10% 0%, rgba(106,0,255,.45), transparent 60%),
+        radial-gradient(120% 100% at 100% 20%, rgba(63,124,255,.45), transparent 60%),
+        linear-gradient(135deg,#0b1020 0%, #10152b 100%);
+      display:flex; align-items:center; justify-content:center; text-align:center; padding:14px;
+    }
+    .promo-text{color:#e8ecff; font-weight:800; letter-spacing:.2px; line-height:1.25}
+    .promo-text small{display:block; color:#b8c2e8; font-weight:700; margin-top:6px}
+
     .footer{color:var(--muted);font-size:12px;padding:24px 20px 32px;text-align:center}
 
-    @media (max-width:520px){.avatar{width:86px;height:86px}.titles h1{font-size:26px}}
+    @media (max-width:520px){
+      .avatar{width:86px;height:86px}
+      .titles h1{font-size:26px}
+      .product{min-width:78%; max-width:78%}
+    }
   </style>
 </head>
 <body>
@@ -124,27 +134,95 @@
       <p class="micro">Переход в Telegram для быстрой активации.</p>
     </section>
 
-    <!-- Небольшой видимый абзац с ключом "bart.id sim" для релевантности -->
     <section class="wrap" style="margin-top:8px">
       <p style="color:#a7b6d9;font-size:14px">
         Искали <strong>bart.id sim</strong>? Вы на странице активации SIMHUB — независимая альтернатива.
       </p>
     </section>
 
-    <section class="wrap-more">
-      <h2 class="muted">Смотрите также наши другие тарифы</h2>
-      <div class="tiles">
-        <a class="tile" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener" aria-label="Тарифы на Wildberries">
-          <div class="ico ico-wb"><span>WB</span></div>
-          <div class="meta">
-            <span class="title">Wildberries</span>
+    <section class="market">
+      <h2 class="section-title">Наша линейка тарифов</h2>
+
+      <div class="rail" aria-label="Список тарифов, пролистывайте вправо">
+        <article class="product">
+          <div class="pic">
+            <img src="https://files.salebot.pro/uploads/message_files/83d892950724c66f0f660af181475067eb89fc2a447d20dd494a415858555cf2.jpg" alt="Сим карта МТС Полный Безлимитный интернет без ограничений">
           </div>
-        </a>
-        <a class="tile" href="https://www.ozon.ru/seller/tieeefdr-1273811/?miniapp=seller_1273811" target="_blank" rel="noopener" aria-label="Тарифы на OZON">
-          <div class="ico ico-oz"><span>OZ</span></div>
-          <div class="meta">
-            <span class="title">OZON</span>
+          <div class="body">
+            <h3 class="name">Сим карта МТС Полный Безлимитный интернет без ограничений</h3>
+            <div class="actions">
+              <a class="btn wb" href="https://www.wildberries.ru/catalog/300618366/detail.aspx?size=456790759" target="_blank" rel="noopener" aria-label="Заказать на Wildberries — МТС Полный">Заказать на WB</a>
+            </div>
           </div>
+        </article>
+
+        <article class="product">
+          <div class="pic">
+            <img src="https://files.salebot.pro/uploads/message_files/c8d262a268e6715acbf9e718f99eb8b67236887bfe1f27ef127d9efd5fcd2901.jpg" alt="Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением">
+          </div>
+          <div class="body">
+            <h3 class="name">Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением</h3>
+            <div class="actions">
+              <a class="btn wb" href="https://www.wildberries.ru/catalog/300618359/detail.aspx?size=456790752" target="_blank" rel="noopener" aria-label="Заказать на Wildberries — YOTA МОЖНО">Заказать на WB</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="pic">
+            <img src="https://files.salebot.pro/uploads/message_files/114c6f07c149efec106ccd1784193c8e21bad1e7f559e98203d5fdbc29e12d23.jpg" alt="Сим карта Т2. Безлимитный интернет с ограничением">
+          </div>
+          <div class="body">
+            <h3 class="name">Сим карта Т2. Безлимитный интернет с ограничением</h3>
+            <div class="actions">
+              <a class="btn wb" href="https://www.wildberries.ru/catalog/300619906/detail.aspx?size=456792371" target="_blank" rel="noopener" aria-label="Заказать на Wildberries — Т2">Заказать на WB</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="pic">
+            <img src="https://files.salebot.pro/uploads/message_files/7859b8c656f918748fa99c9ee5cb4659f08e5ffc9e46714513a7c98ad5db3b05.jpg" alt="Сим карта Билайн. Безлимитный интернет с ограничением">
+          </div>
+          <div class="body">
+            <h3 class="name">Сим карта Билайн. Безлимитный интернет с ограничением</h3>
+            <div class="actions">
+              <a class="btn wb" href="https://www.wildberries.ru/catalog/300618361/detail.aspx?size=456790754" target="_blank" rel="noopener" aria-label="Заказать на Wildberries — Билайн">Заказать на WB</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="pic">
+            <img src="https://files.salebot.pro/uploads/message_files/065a652c8e030f6b1a1ebc685775fbd4db74bf870c92a001abea8f338aa536a1.jpg" alt="Сим карта Мегафон. Официальный тариф">
+          </div>
+          <div class="body">
+            <h3 class="name">Сим карта Мегафон. Официальный тариф</h3>
+            <div class="actions">
+              <a class="btn wb" href="https://www.wildberries.ru/catalog/432671801/detail.aspx?targetUrl=EX" target="_blank" rel="noopener" aria-label="Заказать на Wildberries — Мегафон Официальный">Заказать на WB</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product promo">
+          <div class="pic">
+            <div class="promo-text">
+              Смотреть всю нашу линейку тарифов<br>на Wildberries
+              <small>Нажмите — откроется полный список</small>
+            </div>
+          </div>
+          <div class="body">
+            <h3 class="name">Вся линейка тарифов — на Wildberries</h3>
+            <div class="actions">
+              <a class="btn wb" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener" aria-label="Смотреть всю линейку на Wildberries">Перейти на WB</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="wrap" style="text-align:center;margin-top:10px">
+        <a class="btn wb-outline" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">
+          Смотреть всю нашу линейку тарифов на Wildberries
         </a>
       </div>
     </section>
@@ -155,7 +233,6 @@
   </footer>
 
   <script>
-    // Подстраховка: внешние ссылки открываем в новой вкладке
     document.querySelectorAll('a[href^="http"]').forEach(a=>{
       if(!a.target){ a.target = "_blank"; a.rel = "noopener"; }
     });

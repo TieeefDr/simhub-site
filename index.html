@@ -13,53 +13,59 @@
   <meta property="og:url" content="https://tieeefdr.github.io/simhub-site/SIM/">
   <meta property="og:image" content="https://files.salebot.pro/uploads/message_files/f9fc0e5f2651ef2489fe06a329000c4f1c2c315974d856425a015c96c95f4c68.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
-
   <style>
-    *{box-sizing:border-box} html,body{margin:0;padding:0}
-    :root{
-      --bg:#0a0c12;--text:#ecf1ff;--muted:#a7b6d9;--stroke:rgba(255,255,255,.12);
-      --cta:#16c172;--wb1:#7a00cc;--wb2:#ff38a2
-    }
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,'Noto Sans',sans-serif;color:var(--text);background:var(--bg)}
+    *{box-sizing:border-box} html,body{margin:0}
+    :root{--bg:#0a0c12;--text:#ecf1ff;--muted:#a7b6d9;--stroke:rgba(255,255,255,.12);--cta:#16c172;--wb1:#7a00cc;--wb2:#ff38a2}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,'Noto Sans',sans-serif;background:var(--bg);color:var(--text)}
     .bg{position:fixed;inset:0;z-index:-1;background:
       radial-gradient(1200px 600px at 10% -10%,rgba(106,0,255,.25),transparent 60%),
       radial-gradient(800px 500px at 100% 0%,rgba(63,124,255,.18),transparent 55%),
       radial-gradient(700px 600px at 20% 100%,rgba(106,0,255,.15),transparent 55%),
-      linear-gradient(135deg,#0b1020 0%,#10152b 100%);filter:saturate(110%)}
+      linear-gradient(135deg,#0b1020 0%,#10152b 100%)}
     .wrap{max-width:980px;margin:0 auto;padding:20px}
 
-    .header{padding-top:18px;padding-bottom:0}
+    /* Шапка */
+    .header{padding-top:18px}
     .brand{display:flex;align-items:center;gap:clamp(8px,2.5vw,16px)}
     .avatar{width:clamp(64px,12vw,110px);height:clamp(64px,12vw,110px);border-radius:50%;padding:3px;background:linear-gradient(135deg,#6a00ff,#3f7cff);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 0 0 2px rgba(255,255,255,.08)}
     .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-    .titles h1{margin:0;font-weight:800;font-size:clamp(20px,6vw,32px);letter-spacing:.2px;line-height:1.1}
+    .titles h1{margin:0;font-weight:800;font-size:clamp(20px,6vw,32px);line-height:1.1}
     .subtitle{margin:.2rem 0 0;font-size:clamp(12px,3.5vw,15px);color:var(--muted)}
 
-    /* CTA */
-    .cta-card{position:relative;margin-top:16px;margin-bottom:18px;
-      padding:clamp(16px,4.5vw,28px) clamp(14px,4vw,22px);text-align:center;border-radius:20px;border:1px solid rgba(255,255,255,.14);
-      background:radial-gradient(80% 120% at 0% 0%,rgba(106,0,255,.18),transparent 60%),
-                 radial-gradient(80% 120% at 100% 0%,rgba(63,124,255,.18),transparent 60%),
-                 linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
-      box-shadow:0 20px 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
-    .cta-card::before{content:"";position:absolute;inset:-2px;border-radius:inherit;background:linear-gradient(135deg,rgba(106,0,255,.55),rgba(63,124,255,.55));filter:blur(18px);opacity:.25;z-index:-1}
+    /* CTA – опустил ниже + крупная зона тапа */
+    .cta-card{
+      position:relative;
+      margin-top:clamp(24px,9vh,80px); /* ниже для большого пальца */
+      margin-bottom:22px;
+      padding:clamp(16px,4.5vw,28px) clamp(14px,4vw,22px);
+      text-align:center;border-radius:20px;border:1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(80% 120% at 0% 0%,rgba(106,0,255,.18),transparent 60%),
+        radial-gradient(80% 120% at 100% 0%,rgba(63,124,255,.18),transparent 60%),
+        linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
     .lead{margin:0 auto clamp(10px,3vw,18px);max-width:860px;font-size:clamp(15px,4.1vw,19px);line-height:1.35;font-weight:800}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;border-radius:16px;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px;border:1px solid transparent;transition:transform .08s,box-shadow .2s,background .2s}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;border-radius:16px;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px;border:1px solid transparent;transition:transform .08s,box-shadow .2s}
     .btn.cta{width:100%;white-space:nowrap;font-size:clamp(15px,4.2vw,18px);padding:clamp(12px,3.6vw,16px) 16px;background:linear-gradient(90deg,var(--cta),#23d287);color:#05270f;box-shadow:0 12px 26px rgba(22,193,114,.35)}
-    .btn.cta:hover{transform:translateY(-1px);box-shadow:0 16px 30px rgba(22,193,114,.45)}
+    .btn.cta:hover{transform:translateY(-1px)}
     .btn.cta svg{width:18px;height:18px}
     .micro{margin:10px 0 0;color:var(--muted);font-size:clamp(11px,3vw,12px)}
 
-    /* Divider между секциями */
-    .divider{height:14px;margin:6px -6px 6px;border-radius:999px;
-      background:linear-gradient(90deg, rgba(106,0,255,.45), rgba(63,124,255,.45));opacity:.75}
+    /* Секция витрины — визуально отдельно от CTA */
+    .market-wrap{
+      margin-top:8px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:22px;
+      padding:14px 12px 6px;
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      box-shadow:0 18px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05)
+    }
+    .section-title{margin:0 6px 8px;color:#c9d3f3;font-weight:800;font-size:clamp(18px,5.2vw,24px)}
+    .section-note{margin:0 6px 8px;color:#9fb0d7;font-size:12px}
 
-    .section-title{color:#c9d3f3;font-weight:800;letter-spacing:.3px;margin:14px 4px 10px;font-size:clamp(18px,5.2vw,24px)}
-
-    /* Лента маркетплейса */
-    .market{margin-top:0}
+    /* Лента */
     .scroller{position:relative}
-    .rail{display:flex;gap:12px;overflow-x:auto;padding:6px 4px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x;scroll-behavior:smooth}
+    .rail{display:flex;gap:12px;overflow-x:auto;padding:8px 6px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x;scroll-behavior:smooth}
     .rail::-webkit-scrollbar{height:10px}
     .rail::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:10px}
     .rail::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:10px}
@@ -76,45 +82,47 @@
     .arrow.left{left:6px}
     .arrow.right{right:6px}
 
-    /* Карточки (дефолт для планшет/десктоп) */
+    /* Карточки */
     .product{display:flex;flex-direction:column;scroll-snap-align:start;min-width:240px;max-width:240px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--stroke);border-radius:16px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.3)}
     .product .pic{position:relative;width:100%;aspect-ratio:3/4;background:#0f1320}
     .product .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .product .body{display:flex;flex-direction:column;padding:10px 10px 12px;flex:1}
-    .product .name{font-weight:800;font-size:15px;line-height:1.25;margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+    .product .name{font-weight:800;font-size:15px;line-height:1.25;margin:0 0 10px; /* показываем названия полностью */display:block;max-height:none;white-space:normal;overflow:visible}
     .product .actions{margin-top:auto;display:flex}
     .btn.wb{width:100%;padding:12px 14px;border-radius:12px;font-size:14px;background:linear-gradient(135deg,var(--wb1),var(--wb2));color:#fff;border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 22px rgba(122,0,204,.35)}
-    .btn.wb:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(122,0,204,.45)}
+    .btn.wb:hover{transform:translateY(-1px)}
 
-    .product.promo .pic{background:
-      radial-gradient(120% 100% at 10% 0%,rgba(106,0,255,.45),transparent 60%),
-      radial-gradient(120% 100% at 100% 20%,rgba(63,124,255,.45),transparent 60%),
-      linear-gradient(135deg,#0b1020 0%,#10152b 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px}
-    .promo-text{color:#e8ecff;font-weight:800;letter-spacing:.2px;line-height:1.25}
-    .promo-text small{display:block;color:#b8c2e8;font-weight:700;margin-top:6px}
+    .product.promo .pic{
+      background:
+        radial-gradient(120% 100% at 10% 0%,rgba(106,0,255,.45),transparent 60%),
+        radial-gradient(120% 100% at 100% 20%,rgba(63,124,255,.45),transparent 60%),
+        linear-gradient(135deg,#0b1020 0%,#10152b 100%);
+      display:flex;align-items:center;justify-content:center;text-align:center;padding:14px}
+    .promo-text{color:#e8ecff;font-weight:800;letter-spacing:.2px;line-height:1.25;font-size:15px}
+    .promo-text small{display:block;color:#b8c2e8;font-weight:700;margin-top:6px;font-size:12px}
 
-    .btn.wb-outline{border:2px solid transparent;background:
-      linear-gradient(#0a0c12,#0a0c12) padding-box,
-      linear-gradient(135deg,var(--wb1),var(--wb2)) border-box;color:#fff;
-      padding:12px 18px;border-radius:14px;font-weight:800}
+    .btn.wb-outline{border:2px solid transparent;background:linear-gradient(#0a0c12,#0a0c12) padding-box,linear-gradient(135deg,var(--wb1),var(--wb2)) border-box;color:#fff;padding:12px 18px;border-radius:14px;font-weight:800}
 
     .footer{color:var(--muted);font-size:12px;padding:20px 20px 28px;text-align:center}
 
-    /* === МОБАЙЛ: видно ~2.5 карточки, + чёткий разделитель === */
+    /* Мобильные правки: 2–2.5 карточки, компактный текст */
     @media (max-width:520px){
-      .scroller{margin-inline:-14px}
-      .rail{padding:10px 14px 12px;gap:10px}
+      .wrap{padding:18px}
+      .scroller{margin-inline:-10px}
+      .rail{padding:10px 10px 12px;gap:10px}
       .arrow{width:34px;height:38px}
       .fade-edge{width:28px}
-      /* ширина карточки = (vw - боковые паддинги - 2 gaps) / 2.5 */
+      /* 2.5 карточки в ширину */
       .product{
-        min-width:calc((100vw - 28px - 2*10px)/2.5);
-        max-width:calc((100vw - 28px - 2*10px)/2.5);
+        min-width:calc((100vw - 20px - 2*10px)/2.5);
+        max-width:calc((100vw - 20px - 2*10px)/2.5);
         border-radius:12px
       }
       .product .body{padding:8px}
-      .product .name{font-size:12px;-webkit-line-clamp:2;margin-bottom:6px}
-      .btn.wb{font-size:11px;padding:8px 6px;border-radius:10px}
+      .product .name{font-size:12.5px;margin-bottom:6px}
+      .btn.wb{font-size:11.5px;padding:8px 6px;border-radius:10px}
+      .section-title{font-size:18px;margin:0 6px 6px}
+      .section-note{font-size:11.5px}
     }
   </style>
 </head>
@@ -144,12 +152,10 @@
       <p class="micro">Переход в Telegram для быстрой активации.</p>
     </section>
 
-    <!-- Разделитель -->
-    <div class="divider" aria-hidden="true"></div>
-
-    <!-- Мини-маркетплейс -->
-    <section class="market">
+    <!-- Витрина: отдельная карточка-секция -->
+    <section class="market-wrap">
       <h2 class="section-title">Наша линейка тарифов</h2>
+      <p class="section-note">Мини-витрина с быстрыми ссылками на WB</p>
 
       <div class="scroller">
         <div class="fade-edge fade-left" aria-hidden="true"></div>
@@ -163,39 +169,40 @@
         </button>
 
         <div class="rail" id="rail" aria-label="Список тарифов, листайте вправо">
+          <!-- 1 -->
           <article class="product">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/83d892950724c66f0f660af181475067eb89fc2a447d20dd494a415858555cf2.jpg" alt="Сим карта МТС Полный Безлимитный интернет без ограничений"></div>
             <div class="body"><h3 class="name">Сим карта МТС Полный Безлимитный интернет без ограничений</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/300618366/detail.aspx?size=456790759" target="_blank" rel="noopener">Заказать на WB</a></div></div>
           </article>
-
+          <!-- 2 -->
           <article class="product">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/c8d262a268e6715acbf9e718f99eb8b67236887bfe1f27ef127d9efd5fcd2901.jpg" alt="Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением"></div>
             <div class="body"><h3 class="name">Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/300618359/detail.aspx?size=456790752" target="_blank" rel="noopener">Заказать на WB</a></div></div>
           </article>
-
+          <!-- 3 -->
           <article class="product">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/114c6f07c149efec106ccd1784193c8e21bad1e7f559e98203d5fdbc29e12d23.jpg" alt="Сим карта Т2. Безлимитный интернет с ограничением"></div>
             <div class="body"><h3 class="name">Сим карта Т2. Безлимитный интернет с ограничением</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/300619906/detail.aspx?size=456792371" target="_blank" rel="noopener">Заказать на WB</a></div></div>
           </article>
-
+          <!-- 4 -->
           <article class="product">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/7859b8c656f918748fa99c9ee5cb4659f08e5ffc9e46714513a7c98ad5db3b05.jpg" alt="Сим карта Билайн. Безлимитный интернет с ограничением"></div>
             <div class="body"><h3 class="name">Сим карта Билайн. Безлимитный интернет с ограничением</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/300618361/detail.aspx?size=456790754" target="_blank" rel="noopener">Заказать на WB</a></div></div>
           </article>
-
+          <!-- 5 -->
           <article class="product">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/065a652c8e030f6b1a1ebc685775fbd4db74bf870c92a001abea8f338aa536a1.jpg" alt="Сим карта Мегафон. Официальный тариф"></div>
             <div class="body"><h3 class="name">Сим карта Мегафон. Официальный тариф</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/432671801/detail.aspx?targetUrl=EX" target="_blank" rel="noopener">Заказать на WB</a></div></div>
           </article>
-
+          <!-- Promo -->
           <article class="product promo">
-            <div class="pic"><div class="promo-text">Смотреть всю нашу линейку тарифов<br>на Wildberries<small>Нажмите — откроется полный список</small></div></div>
+            <div class="pic"><div class="promo-text">Смотреть всю нашу линейку тарифов на Wildberries<small>Нажмите — откроется полный список</small></div></div>
             <div class="body"><h3 class="name">Вся линейка тарифов — на Wildberries</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">Перейти на WB</a></div></div>
           </article>
         </div>
       </div>
 
-      <div class="wrap" style="text-align:center;margin-top:8px">
+      <div style="text-align:center;margin-top:10px">
         <a class="btn wb-outline" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">Смотреть всю нашу линейку тарифов на Wildberries</a>
       </div>
     </section>
@@ -204,10 +211,10 @@
   <footer class="footer"><small>© 2025 SIMHUB · Поддержка 7/7</small></footer>
 
   <script>
-    // Все внешние ссылки — в новой вкладке
+    // внешние ссылки
     document.querySelectorAll('a[href^="http"]').forEach(a=>{ if(!a.target){ a.target="_blank"; a.rel="noopener"; } });
 
-    // Стрелки + тени
+    // навигация витрины
     const rail=document.getElementById('rail');
     const left=document.querySelector('.arrow.left');
     const right=document.querySelector('.arrow.right');
@@ -224,15 +231,14 @@
       fadeR.classList.toggle('show', over && !atEnd);
     }
 
-    // шаг = ширина карточки + gap → листаем по 1 карточке (на 2.5 выглядет естественно)
+    // шаг = ширина карточки + gap; прокручиваем СРАЗУ 2 карточки
     function cardStep(){
       const first=rail.querySelector('.product');
       if(!first) return Math.max(220, rail.clientWidth*.8);
-      const styles=getComputedStyle(rail);
-      const gap=parseFloat(styles.columnGap||styles.gap||'12');
+      const gap=parseFloat(getComputedStyle(rail).gap||'12');
       return first.getBoundingClientRect().width + gap;
     }
-    function step(dir){ rail.scrollBy({left: cardStep()*dir, behavior:'smooth'}); setTimeout(()=>{stick();upd();},380); }
+    function step(dir){ rail.scrollBy({left: cardStep()*2*dir, behavior:'smooth'}); setTimeout(()=>{stick();upd();},380); }
 
     right.addEventListener('click',()=>step(1));
     left.addEventListener('click',()=>step(-1));

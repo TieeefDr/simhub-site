@@ -18,7 +18,36 @@
     :root{
       --bg:#0a0c12;--text:#ecf1ff;--muted:#a7b6d9;--stroke:rgba(255,255,255,.12);
       --cta:#16c172;--wb1:#7a00cc;--wb2:#ff38a2
-    
+    }
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,'Noto Sans',sans-serif;color:var(--text);background:var(--bg)}
+    .bg{position:fixed;inset:0;z-index:-1;background:
+      radial-gradient(1200px 600px at 10% -10%,rgba(106,0,255,.25),transparent 60%),
+      radial-gradient(800px 500px at 100% 0%,rgba(63,124,255,.18),transparent 55%),
+      radial-gradient(700px 600px at 20% 100%,rgba(106,0,255,.15),transparent 55%),
+      linear-gradient(135deg,#0b1020 0%,#10152b 100%);filter:saturate(110%)}
+    .wrap{max-width:980px;margin:0 auto;padding:20px}
+    .header{padding-top:18px;padding-bottom:0}
+    .brand{display:flex;align-items:center;gap:clamp(8px,2.5vw,16px)}
+    .avatar{width:clamp(64px,12vw,110px);height:clamp(64px,12vw,110px);border-radius:50%;padding:3px;background:linear-gradient(135deg,#6a00ff,#3f7cff);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 0 0 2px rgba(255,255,255,.08)}
+    .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+    .titles h1{margin:0;font-weight:800;font-size:clamp(20px,6vw,32px);letter-spacing:.2px;line-height:1.1}
+    .subtitle{margin:.2rem 0 0;font-size:clamp(12px,3.5vw,15px);color:var(--muted)}
+
+    /* CTA */
+    .cta-card{position:relative;margin-top:16px;padding:clamp(16px,4.5vw,28px) clamp(14px,4vw,22px);text-align:center;border-radius:20px;border:1px solid rgba(255,255,255,.14);
+      background:radial-gradient(80% 120% at 0% 0%,rgba(106,0,255,.18),transparent 60%),radial-gradient(80% 120% at 100% 0%,rgba(63,124,255,.18),transparent 60%),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
+    .cta-card::before{content:"";position:absolute;inset:-2px;border-radius:inherit;background:linear-gradient(135deg,rgba(106,0,255,.55),rgba(63,124,255,.55));filter:blur(18px);opacity:.25;z-index:-1}
+    .lead{margin:0 auto clamp(10px,3vw,18px);max-width:860px;font-size:clamp(15px,4.1vw,19px);line-height:1.35;font-weight:800}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;border-radius:16px;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px;border:1px solid transparent;transition:transform .08s,box-shadow .2s,background .2s}
+    .btn.cta{width:100%;white-space:nowrap;font-size:clamp(15px,4.2vw,18px);padding:clamp(12px,3.6vw,16px) 16px;background:linear-gradient(90deg,var(--cta),#23d287);color:#05270f;box-shadow:0 12px 26px rgba(22,193,114,.35)}
+    .btn.cta:hover{transform:translateY(-1px);box-shadow:0 16px 30px rgba(22,193,114,.45)}
+    .btn.cta svg{width:18px;height:18px}
+    .micro{margin:10px 0 0;color:var(--muted);font-size:clamp(11px,3vw,12px)}
+
+    .section-title{color:#c9d3f3;font-weight:800;letter-spacing:.3px;margin:22px 4px 10px;font-size:clamp(18px,5.2vw,24px)}
+
+    /* Лента маркетплейса */
     .scroller{position:relative}
     .rail{display:flex;gap:12px;overflow-x:auto;padding:6px 4px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x;scroll-behavior:smooth}
     .rail::-webkit-scrollbar{height:10px}
@@ -46,4 +75,128 @@
     .btn.wb:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(122,0,204,.45)}
 
     .product.promo .pic{background:
-      r
+      radial-gradient(120% 100% at 10% 0%,rgba(106,0,255,.45),transparent 60%),
+      radial-gradient(120% 100% at 100% 20%,rgba(63,124,255,.45),transparent 60%),
+      linear-gradient(135deg,#0b1020 0%,#10152b 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px}
+    .promo-text{color:#e8ecff;font-weight:800;letter-spacing:.2px;line-height:1.25;font-size:clamp(13px,3.6vw,15px)}
+    .promo-text small{display:block;color:#b8c2e8;font-weight:700;margin-top:6px;font-size:clamp(11px,3.2vw,13px)}
+
+    .btn.wb-outline{border:2px solid transparent;background:linear-gradient(#0a0c12,#0a0c12) padding-box,linear-gradient(135deg,var(--wb1),var(--wb2)) border-box;color:#fff;padding:12px 18px;border-radius:14px;font-weight:800;font-size:clamp(13px,3.8vw,15px)}
+
+    .footer{color:var(--muted);font-size:12px;padding:20px 20px 28px;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <header class="wrap header">
+    <div class="brand">
+      <div class="avatar">
+        <img src="https://files.salebot.pro/uploads/message_files/f9fc0e5f2651ef2489fe06a329000c4f1c2c315974d856425a015c96c95f4c68.jpg" alt="SIMHUB консультант" loading="eager">
+      </div>
+      <div class="titles">
+        <h1>Активация SIM-карты</h1>
+        <p class="subtitle">Для заказов с <strong>Wildberries</strong> и <strong>OZON</strong></p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- CTA -->
+    <section class="cta-card">
+      <p class="lead">Чтобы активировать SIM-карту, купленную на <b>Wildberries</b> и <b>OZON</b>, нажмите кнопку ниже</p>
+      <a class="btn cta" href="https://t.me/m/jLcwytf1MzIy" target="_blank" rel="noopener" aria-label="Перейти в Telegram для активации">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 3.01c-.33.01-.66.1-.96.25L3.73 11.1c-1.69.77-1.59 2.26.27 2.86l4.78 1.55 1.84 5.9c.33 1.05 1.68 1.18 2.3.22l2.62-4.04 5.08 3.75c.92.68 2.2.17 2.44-.95l3.38-15.7C26.77 2.58 24.91 1.7 22 3.01z" fill="currentColor"/></svg>
+        Хочу активировать SIM-карту
+      </a>
+      <p class="micro">Переход в Telegram для быстрой активации.</p>
+    </section>
+
+    <!-- Мини-маркетплейс -->
+    <section class="market">
+      <h2 class="section-title">Наша линейка тарифов</h2>
+
+      <div class="scroller">
+        <div class="fade-edge fade-left" aria-hidden="true"></div>
+        <div class="fade-edge fade-right" aria-hidden="true"></div>
+
+        <button class="arrow left" aria-label="Листать влево">
+          <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
+        </button>
+        <button class="arrow right" aria-label="Листать вправо">
+          <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z" fill="currentColor"/></svg>
+        </button>
+
+        <div class="rail" id="rail" aria-label="Список тарифов, листайте вправо">
+          <!-- 1 -->
+          <article class="product">
+            <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/83d892950724c66f0f660af181475067eb89fc2a447d20dd494a415858555cf2.jpg" alt="Сим карта МТС Полный Безлимитный интернет без ограничений"></div>
+            <div class="body"><h3 class="name">Сим карта МТС Полный Безлимитный интернет без ограничений</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/300618366/detail.aspx?size=456790759" target="_blank" rel="noopener">Заказать на WB</a></div></div>
+          </article>
+          <!-- 2 -->
+          <article class="product">
+            <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/c8d262a268e6715acbf9e718f99eb8b67236887bfe1f27ef127d9efd5fcd2901.jpg" alt="Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением"></div>
+            <div class="body"><h3 class="name">Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/300618359/detail.aspx?size=456790752" target="_blank" rel="noopener">Заказать на WB</a></div></div>
+          </article>
+          <!-- 3 -->
+          <article class="product">
+            <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/114c6f07c149efec106ccd1784193c8e21bad1e7f559e98203d5fdbc29e12d23.jpg" alt="Сим карта Т2. Безлимитный интернет с ограничением"></div>
+            <div class="body"><h3 class="name">Сим карта Т2. Безлимитный интернет с ограничением</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/300619906/detail.aspx?size=456792371" target="_blank" rel="noopener">Заказать на WB</a></div></div>
+          </article>
+          <!-- 4 -->
+          <article class="product">
+            <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/7859b8c656f918748fa99c9ee5cb4659f08e5ffc9e46714513a7c98ad5db3b05.jpg" alt="Сим карта Билайн. Безлимитный интернет с ограничением"></div>
+            <div class="body"><h3 class="name">Сим карта Билайн. Безлимитный интернет с ограничением</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/300618361/detail.aspx?size=456790754" target="_blank" rel="noopener">Заказать на WB</a></div></div>
+          </article>
+          <!-- 5 -->
+          <article class="product">
+            <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/065a652c8e030f6b1a1ebc685775fbd4db74bf870c92a001abea8f338aa536a1.jpg" alt="Сим карта Мегафон. Официальный тариф"></div>
+            <div class="body"><h3 class="name">Сим карта Мегафон. Официальный тариф</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/catalog/432671801/detail.aspx?targetUrl=EX" target="_blank" rel="noopener">Заказать на WB</a></div></div>
+          </article>
+          <!-- Promo -->
+          <article class="product promo">
+            <div class="pic"><div class="promo-text">Смотреть всю нашу линейку тарифов<br>на Wildberries<small>Нажмите — откроется полный список</small></div></div>
+            <div class="body"><h3 class="name">Вся линейка тарифов — на Wildberries</h3><div class="actions"><a class="btn wb" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">Перейти на WB</a></div></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="wrap" style="text-align:center;margin-top:8px">
+        <a class="btn wb-outline" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">Смотреть всю нашу линейку тарифов на Wildberries</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><small>© 2025 SIMHUB · Поддержка 7/7</small></footer>
+
+  <script>
+    // Внешние ссылки в новой вкладке
+    document.querySelectorAll('a[href^="http"]').forEach(a=>{ if(!a.target){ a.target="_blank"; a.rel="noopener"; } });
+
+    // Навигация в ленте
+    const rail=document.getElementById('rail');
+    const left=document.querySelector('.arrow.left');
+    const right=document.querySelector('.arrow.right');
+    const fadeL=document.querySelector('.fade-left');
+    const fadeR=document.querySelector('.fade-right');
+    const TOL=20; let stopTimer;
+    const getMax=()=>Math.max(0,rail.scrollWidth-rail.clientWidth);
+    function stick(){const m=getMax(); if(rail.scrollLeft<TOL) rail.scrollLeft=0; if(rail.scrollLeft>m-TOL) rail.scrollLeft=m;}
+    function upd(){const m=getMax(),x=rail.scrollLeft,over=m>TOL,at0=x<=TOL,atEnd=x>=m-TOL;
+      left.classList.toggle('show', over && !at0);
+      right.classList.toggle('show', over && !atEnd);
+      fadeL.classList.toggle('show', over && !at0);
+      fadeR.classList.toggle('show', over && !atEnd);
+    }
+    function step(dir){const d=Math.max(220,rail.clientWidth*.85)*dir; rail.scrollBy({left:d,behavior:'smooth'}); setTimeout(()=>{stick();upd();},380);}
+    right.addEventListener('click',()=>step(1)); left.addEventListener('click',()=>step(-1));
+    rail.addEventListener('scroll',()=>{ clearTimeout(stopTimer); stopTimer=setTimeout(()=>{stick();upd();},120); },{passive:true});
+    function init(){ rail.scrollTo({left:0,behavior:'auto'}); stick(); upd();
+      rail.querySelectorAll('img').forEach(img=>{ if(!img.complete) img.addEventListener('load',()=>{stick();upd();},{once:true}); });
+      requestAnimationFrame(upd); setTimeout(upd,120); setTimeout(upd,400);
+    }
+    window.addEventListener('load',init); window.addEventListener('pageshow',init);
+    window.addEventListener('resize',()=>{stick();upd();}); window.addEventListener('orientationchange',()=>setTimeout(()=>{stick();upd();},300));
+  </script>
+</body>
+</html>

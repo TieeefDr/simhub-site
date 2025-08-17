@@ -15,11 +15,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
     *{box-sizing:border-box} html,body{margin:0}
-    :root{
-      --bg:#0a0c12;--text:#ecf1ff;--muted:#a7b6d9;--stroke:rgba(255,255,255,.12);
-      --cta:#16c172;--wb1:#7a00cc;--wb2:#ff38a2
-    }
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,'Noto Sans',sans-serif;background:var(--bg);color:var(--text)}
+    :root{--bg:#0a0c12;--text:#ecf1ff;--muted:#a7b6d9;--stroke:rgba(255,255,255,.12);--cta:#16c172;--wb1:#7a00cc;--wb2:#ff38a2}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,'Noto Sans',sans-serif;background:#0a0c12;color:var(--text)}
     .bg{position:fixed;inset:0;z-index:-1;background:
       radial-gradient(1200px 600px at 10% -10%,rgba(106,0,255,.25),transparent 60%),
       radial-gradient(800px 500px at 100% 0%,rgba(63,124,255,.18),transparent 55%),
@@ -27,39 +24,33 @@
       linear-gradient(135deg,#0b1020 0%,#10152b 100%)}
     .wrap{max-width:980px;margin:0 auto;padding:20px}
 
-    /* Шапка — опустил ниже */
-    .header{padding-top:clamp(28px,6vh,56px)}
+    /* Шапка – опустил ближе к CTA */
+    .header{padding-top:clamp(56px,11vh,96px)}
     .brand{display:flex;align-items:center;gap:clamp(8px,2.5vw,16px)}
     .avatar{width:clamp(64px,12vw,110px);height:clamp(64px,12vw,110px);border-radius:50%;padding:3px;background:linear-gradient(135deg,#6a00ff,#3f7cff);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 0 0 2px rgba(255,255,255,.08)}
     .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
     .titles h1{margin:0;font-weight:800;font-size:clamp(20px,6vw,32px);line-height:1.1}
     .subtitle{margin:.2rem 0 0;font-size:clamp(12px,3.5vw,15px);color:var(--muted)}
 
-    /* CTA — зона большого пальца */
+    /* CTA */
     .cta-card{
-      position:relative;
-      margin-top:clamp(18px,8vh,70px);
-      margin-bottom:22px;
-      padding:clamp(16px,4.5vw,28px) clamp(14px,4vw,22px);
-      text-align:center;border-radius:20px;border:1px solid rgba(255,255,255,.14);
+      position:relative;margin-top:clamp(18px,7vh,60px);margin-bottom:22px;
+      padding:clamp(16px,4.5vw,28px) clamp(14px,4vw,22px);text-align:center;border-radius:20px;
+      border:1px solid rgba(255,255,255,.14);
       background:
         radial-gradient(80% 120% at 0% 0%,rgba(106,0,255,.18),transparent 60%),
         radial-gradient(80% 120% at 100% 0%,rgba(63,124,255,.18),transparent 60%),
         linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
       box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
     .lead{margin:0 auto clamp(10px,3vw,18px);max-width:860px;font-size:clamp(15px,4.1vw,19px);line-height:1.35;font-weight:800}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;border-radius:16px;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px;border:1px solid transparent;transition:transform .08s,box-shadow .2s}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;border-radius:16px;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px;border:0;transition:transform .08s,box-shadow .2s}
     .btn.cta{width:100%;white-space:nowrap;font-size:clamp(15px,4.2vw,18px);padding:clamp(12px,3.6vw,16px) 16px;background:linear-gradient(90deg,var(--cta),#23d287);color:#05270f;box-shadow:0 12px 26px rgba(22,193,114,.35)}
     .btn.cta:hover{transform:translateY(-1px)}
     .btn.cta svg{width:18px;height:18px}
     .micro{margin:10px 0 0;color:var(--muted);font-size:clamp(11px,3vw,12px)}
 
-    /* Витрина — отдельная «карточка-секция» */
-    .market-wrap{
-      margin-top:10px;border:1px solid rgba(255,255,255,.10);border-radius:22px;
-      padding:14px 12px 10px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-      box-shadow:0 18px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05)
-    }
+    /* Витрина – отдельная секция */
+    .market-wrap{margin-top:10px;border:1px solid rgba(255,255,255,.10);border-radius:22px;padding:14px 12px 10px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:0 18px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05)}
     .section-title{margin:0 6px 8px;color:#c9d3f3;font-weight:800;font-size:clamp(18px,5.2vw,24px)}
     .section-note{margin:0 6px 10px;color:#9fb0d7;font-size:12px}
 
@@ -77,10 +68,9 @@
     .arrow svg{width:18px;height:18px}
     .arrow:active{transform:translateY(-50%) scale(.98)}
     .arrow.show{opacity:1;pointer-events:auto}
-    .arrow.left{left:6px}
-    .arrow.right{right:6px}
+    .arrow.left{left:6px}.arrow.right{right:6px}
 
-    /* Карточка = ссылка целиком (без вложенных <a>) */
+    /* Карточка = ссылка целиком */
     a.product{color:inherit;text-decoration:none}
     .product{display:flex;flex-direction:column;scroll-snap-align:start;min-width:240px;max-width:240px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--stroke);border-radius:16px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.3)}
     .product .pic{position:relative;width:100%;aspect-ratio:3/4;background:#0f1320}
@@ -88,42 +78,35 @@
     .product .body{display:flex;flex-direction:column;padding:10px 10px 12px;flex:1}
     .product .name{font-weight:800;font-size:14px;line-height:1.25;margin:0 0 10px;white-space:normal}
     .product .actions{margin-top:auto;display:flex}
-    .btn.wb{width:100%;padding:12px 14px;border-radius:12px;font-size:14px;background:linear-gradient(135deg,var(--wb1),var(--wb2));color:#fff;border:1px solid rgba(255,255,255,.15);box-shadow:0 10px 22px rgba(122,0,204,.35)}
-    .btn.wb:hover{transform:translateY(-1px)}
+    .btn.wb{width:100%;padding:12px 14px;border-radius:12px;font-size:14px;background:linear-gradient(135deg,var(--wb1),var(--wb2));color:#fff;box-shadow:0 10px 22px rgba(122,0,204,.35)} /* border:0 → ничего не «просвечивает» */
 
-    .product.promo .pic{
-      background:
-        radial-gradient(120% 100% at 10% 0%,rgba(106,0,255,.45),transparent 60%),
-        radial-gradient(120% 100% at 100% 20%,rgba(63,124,255,.45),transparent 60%),
-        linear-gradient(135deg,#0b1020 0%,#10152b 100%);
+    .product.promo .pic{background:
+      radial-gradient(120% 100% at 10% 0%,rgba(106,0,255,.45),transparent 60%),
+      radial-gradient(120% 100% at 100% 20%,rgba(63,124,255,.45),transparent 60%),
+      linear-gradient(135deg,#0b1020 0%,#10152b 100%);
       display:flex;align-items:center;justify-content:center;text-align:center;padding:14px}
     .promo-text{color:#e8ecff;font-weight:800;letter-spacing:.2px;line-height:1.25;font-size:15px}
     .promo-text small{display:block;color:#b8c2e8;font-weight:700;margin-top:6px;font-size:12px}
 
-    /* Большой баннер WB */
-    .wb-banner{margin:12px 6px 4px;padding:14px;border-radius:18px;
+    /* Вернул прежнюю «outline»-кнопку WB */
+    .wb-outer{display:flex;justify-content:center;margin:12px 6px 4px}
+    .btn.wb-outline{
+      border:2px solid transparent;
       background:
-        radial-gradient(120% 100% at 0% 0%,rgba(122,0,204,.25),transparent 60%),
-        radial-gradient(120% 100% at 100% 0%,rgba(255,56,162,.18),transparent 60%),
-        linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.14);
-      display:flex;align-items:center;justify-content:center;text-align:center}
-    .wb-banner a{display:inline-block;text-decoration:none;color:#fff;font-weight:800;
-      padding:12px 18px;border-radius:14px;
-      background:linear-gradient(135deg,var(--wb1),var(--wb2));
-      box-shadow:0 12px 26px rgba(122,0,204,.35);border:1px solid rgba(255,255,255,.18)}
-    .wb-banner a:hover{transform:translateY(-1px)}
+        linear-gradient(#0a0c12,#0a0c12) padding-box,
+        linear-gradient(135deg,var(--wb1),var(--wb2)) border-box;
+      color:#fff;padding:12px 18px;border-radius:14px;font-weight:800;box-shadow:0 12px 26px rgba(122,0,204,.25)
+    }
 
     .footer{color:var(--muted);font-size:12px;padding:20px 20px 28px;text-align:center}
 
-    /* Мобильные правки */
+    /* Мобильные правки: ~2.5 карточки */
     @media (max-width:520px){
       .wrap{padding:18px}
       .scroller{margin-inline:-10px}
       .rail{padding:10px 10px 12px;gap:10px}
       .arrow{width:34px;height:38px}
       .fade-edge{width:28px}
-      /* показываем ~2.5 карточки */
       .product{
         min-width:calc((100vw - 20px - 2*10px)/2.5);
         max-width:calc((100vw - 20px - 2*10px)/2.5);
@@ -180,7 +163,7 @@
         </button>
 
         <div class="rail" id="rail" aria-label="Список тарифов, листайте вправо">
-          <!-- каждая карточка — ссылка на WB -->
+          <!-- карточки как кликабельные ссылки -->
           <a class="product" href="https://www.wildberries.ru/catalog/300618366/detail.aspx?size=456790759" target="_blank" rel="noopener" aria-label="Сим карта МТС — открыть на Wildberries">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/83d892950724c66f0f660af181475067eb89fc2a447d20dd494a415858555cf2.jpg" alt="Сим карта МТС Полный Безлимитный интернет без ограничений"></div>
             <div class="body"><h3 class="name">Сим карта МТС Полный Безлимитный интернет без ограничений</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
@@ -213,9 +196,9 @@
         </div>
       </div>
 
-      <!-- Большой баннер-приглашение -->
-      <div class="wb-banner">
-        <a href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">Смотреть всю нашу линейку тарифов на Wildberries</a>
+      <!-- Вернул нижнюю outline-кнопку -->
+      <div class="wb-outer">
+        <a class="btn wb-outline" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">Смотреть всю нашу линейку тарифов на Wildberries</a>
       </div>
     </section>
   </main>
@@ -226,7 +209,7 @@
     // все внешние ссылки — в новой вкладке
     document.querySelectorAll('a[href^="http"]').forEach(a=>{ if(!a.target){ a.target="_blank"; a.rel="noopener"; } });
 
-    // управление лентой по "якорям": 0 -> середина -> конец
+    // Управление лентой по якорям: 0 → середина → конец (и обратно)
     const rail=document.getElementById('rail');
     const left=document.querySelector('.arrow.left');
     const right=document.querySelector('.arrow.right');
@@ -234,14 +217,28 @@
     const fadeR=document.querySelector('.fade-right');
     const TOL=20; let snaps=[0], stopTimer=0;
 
-    const getMax=()=>Math.max(0,rail.scrollWidth-rail.clientWidth);
+    const getMax=()=>Math.max(0, rail.scrollWidth - rail.clientWidth);
 
     function buildSnaps(){
       const m=getMax();
       snaps = m>0 ? [0, Math.round(m/2), m] : [0];
     }
 
-    function stick(){const m=getMax(); if(rail.scrollLeft<TOL) rail.scrollLeft=0; if(rail.scrollLeft>m-TOL) rail.scrollLeft=m;}
+    function nearestIndex(){
+      const x=rail.scrollLeft;
+      let idx=0, best=Infinity;
+      for(let i=0;i<snaps.length;i++){
+        const d=Math.abs(x-snaps[i]);
+        if(d<best){best=d;idx=i;}
+      }
+      return idx;
+    }
+
+    function stick(){
+      const m=getMax();
+      if(rail.scrollLeft<TOL) rail.scrollLeft=0;
+      if(rail.scrollLeft>m-TOL) rail.scrollLeft=m;
+    }
 
     function upd(){
       const m=getMax(), x=rail.scrollLeft, over=m>TOL, at0=x<=TOL, atEnd=x>=m-TOL;
@@ -251,20 +248,10 @@
       fadeR.classList.toggle('show', over && !atEnd);
     }
 
-    function nextAnchor(dir){
-      const x=rail.scrollLeft;
-      if(dir>0){ // вправо
-        for(const s of snaps){ if(s - x > TOL) return s; }
-        return snaps[snaps.length-1];
-      }else{ // влево
-        for(let i=snaps.length-1;i>=0;i--){ if(x - snaps[i] > TOL) return snaps[i]; }
-        return snaps[0];
-      }
-    }
-
     function go(dir){
-      const target = nextAnchor(dir);
-      rail.scrollTo({left: target, behavior:'smooth'});
+      let idx = nearestIndex() + (dir>0?1:-1);
+      idx = Math.max(0, Math.min(snaps.length-1, idx));
+      rail.scrollTo({left: snaps[idx], behavior:'smooth'});
       setTimeout(()=>{stick();upd();}, 380);
     }
 
@@ -283,7 +270,9 @@
       rail.querySelectorAll('img').forEach(img=>{
         if(!img.complete) img.addEventListener('load',()=>{buildSnaps();stick();upd();},{once:true});
       });
-      requestAnimationFrame(upd); setTimeout(()=>{buildSnaps();upd();},120); setTimeout(()=>{buildSnaps();upd();},450);
+      requestAnimationFrame(upd);
+      setTimeout(()=>{buildSnaps();upd();},120);
+      setTimeout(()=>{buildSnaps();upd();},450);
     }
     window.addEventListener('load',init);
     window.addEventListener('pageshow',init);

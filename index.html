@@ -18,36 +18,7 @@
     :root{
       --bg:#0a0c12;--text:#ecf1ff;--muted:#a7b6d9;--stroke:rgba(255,255,255,.12);
       --cta:#16c172;--wb1:#7a00cc;--wb2:#ff38a2
-    }
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,'Noto Sans',sans-serif;color:var(--text);background:var(--bg)}
-    .bg{position:fixed;inset:0;z-index:-1;background:
-      radial-gradient(1200px 600px at 10% -10%,rgba(106,0,255,.25),transparent 60%),
-      radial-gradient(800px 500px at 100% 0%,rgba(63,124,255,.18),transparent 55%),
-      radial-gradient(700px 600px at 20% 100%,rgba(106,0,255,.15),transparent 55%),
-      linear-gradient(135deg,#0b1020 0%,#10152b 100%);filter:saturate(110%)}
-    .wrap{max-width:980px;margin:0 auto;padding:20px}
-    .header{padding-top:18px;padding-bottom:0}
-    .brand{display:flex;align-items:center;gap:clamp(8px,2.5vw,16px)}
-    .avatar{width:clamp(64px,12vw,110px);height:clamp(64px,12vw,110px);border-radius:50%;padding:3px;background:linear-gradient(135deg,#6a00ff,#3f7cff);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 0 0 2px rgba(255,255,255,.08)}
-    .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-    .titles h1{margin:0;font-weight:800;font-size:clamp(20px,6vw,32px);letter-spacing:.2px;line-height:1.1}
-    .subtitle{margin:.2rem 0 0;font-size:clamp(12px,3.5vw,15px);color:var(--muted)}
-
-    /* CTA */
-    .cta-card{position:relative;margin-top:16px;padding:clamp(16px,4.5vw,28px) clamp(14px,4vw,22px);text-align:center;border-radius:20px;border:1px solid rgba(255,255,255,.14);
-      background:radial-gradient(80% 120% at 0% 0%,rgba(106,0,255,.18),transparent 60%),radial-gradient(80% 120% at 100% 0%,rgba(63,124,255,.18),transparent 60%),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
-      box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
-    .cta-card::before{content:"";position:absolute;inset:-2px;border-radius:inherit;background:linear-gradient(135deg,rgba(106,0,255,.55),rgba(63,124,255,.55));filter:blur(18px);opacity:.25;z-index:-1}
-    .lead{margin:0 auto clamp(10px,3vw,18px);max-width:860px;font-size:clamp(15px,4.1vw,19px);line-height:1.35;font-weight:800}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;border-radius:16px;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px;border:1px solid transparent;transition:transform .08s,box-shadow .2s,background .2s}
-    .btn.cta{width:100%;white-space:nowrap;font-size:clamp(15px,4.2vw,18px);padding:clamp(12px,3.6vw,16px) 16px;background:linear-gradient(90deg,var(--cta),#23d287);color:#05270f;box-shadow:0 12px 26px rgba(22,193,114,.35)}
-    .btn.cta:hover{transform:translateY(-1px);box-shadow:0 16px 30px rgba(22,193,114,.45)}
-    .btn.cta svg{width:18px;height:18px}
-    .micro{margin:10px 0 0;color:var(--muted);font-size:clamp(11px,3vw,12px)}
-
-    .section-title{color:#c9d3f3;font-weight:800;letter-spacing:.3px;margin:22px 4px 10px;font-size:clamp(18px,5.2vw,24px)}
-
-    /* Лента маркетплейса */
+    
     .scroller{position:relative}
     .rail{display:flex;gap:12px;overflow-x:auto;padding:6px 4px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x;scroll-behavior:smooth}
     .rail::-webkit-scrollbar{height:10px}

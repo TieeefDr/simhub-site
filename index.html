@@ -24,8 +24,8 @@
       linear-gradient(135deg,#0b1020 0%,#10152b 100%)}
     .wrap{max-width:980px;margin:0 auto;padding:20px}
 
-    /* Шапка – опустил ближе к CTA */
-    .header{padding-top:clamp(56px,11vh,96px)}
+    /* Шапка — чуть ближе к CTA */
+    .header{padding-top:clamp(32px,8vh,68px)}        /* было больше — убрал пустоту */
     .brand{display:flex;align-items:center;gap:clamp(8px,2.5vw,16px)}
     .avatar{width:clamp(64px,12vw,110px);height:clamp(64px,12vw,110px);border-radius:50%;padding:3px;background:linear-gradient(135deg,#6a00ff,#3f7cff);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 0 0 2px rgba(255,255,255,.08)}
     .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
@@ -34,15 +34,18 @@
 
     /* CTA */
     .cta-card{
-      position:relative;margin-top:clamp(18px,7vh,60px);margin-bottom:22px;
-      padding:clamp(16px,4.5vw,28px) clamp(14px,4vw,22px);text-align:center;border-radius:20px;
+      position:relative;
+      margin-top:clamp(8px,3.5vh,28px);             /* стало меньше */
+      margin-bottom:18px;
+      padding:clamp(16px,4.2vw,26px) clamp(14px,4vw,22px);
+      text-align:center;border-radius:20px;
       border:1px solid rgba(255,255,255,.14);
       background:
         radial-gradient(80% 120% at 0% 0%,rgba(106,0,255,.18),transparent 60%),
         radial-gradient(80% 120% at 100% 0%,rgba(63,124,255,.18),transparent 60%),
         linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
       box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
-    .lead{margin:0 auto clamp(10px,3vw,18px);max-width:860px;font-size:clamp(15px,4.1vw,19px);line-height:1.35;font-weight:800}
+    .lead{margin:0 auto clamp(10px,3vw,16px);max-width:860px;font-size:clamp(15px,4.1vw,19px);line-height:1.35;font-weight:800}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;border-radius:16px;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px;border:0;transition:transform .08s,box-shadow .2s}
     .btn.cta{width:100%;white-space:nowrap;font-size:clamp(15px,4.2vw,18px);padding:clamp(12px,3.6vw,16px) 16px;background:linear-gradient(90deg,var(--cta),#23d287);color:#05270f;box-shadow:0 12px 26px rgba(22,193,114,.35)}
     .btn.cta:hover{transform:translateY(-1px)}
@@ -50,13 +53,13 @@
     .micro{margin:10px 0 0;color:var(--muted);font-size:clamp(11px,3vw,12px)}
 
     /* Витрина – отдельная секция */
-    .market-wrap{margin-top:10px;border:1px solid rgba(255,255,255,.10);border-radius:22px;padding:14px 12px 10px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:0 18px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05)}
+    .market-wrap{margin-top:12px;border:1px solid rgba(255,255,255,.10);border-radius:22px;padding:14px 12px 14px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:0 18px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05)}
     .section-title{margin:0 6px 8px;color:#c9d3f3;font-weight:800;font-size:clamp(18px,5.2vw,24px)}
-    .section-note{margin:0 6px 10px;color:#9fb0d7;font-size:12px}
+    .section-note{margin:0 6px 12px;color:#9fb0d7;font-size:12px}
 
     /* Лента */
     .scroller{position:relative}
-    .rail{display:flex;gap:12px;overflow-x:auto;padding:8px 6px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+    .rail{display:flex;gap:12px;overflow-x:auto;padding:6px 6px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
     .rail::-webkit-scrollbar{height:10px}
     .rail::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:10px}
     .rail::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:10px}
@@ -78,7 +81,7 @@
     .product .body{display:flex;flex-direction:column;padding:10px 10px 12px;flex:1}
     .product .name{font-weight:800;font-size:14px;line-height:1.25;margin:0 0 10px;white-space:normal}
     .product .actions{margin-top:auto;display:flex}
-    .btn.wb{width:100%;padding:12px 14px;border-radius:12px;font-size:14px;background:linear-gradient(135deg,var(--wb1),var(--wb2));color:#fff;box-shadow:0 10px 22px rgba(122,0,204,.35)} /* border:0 → ничего не «просвечивает» */
+    .btn.wb{width:100%;padding:12px 14px;border-radius:12px;font-size:14px;background:linear-gradient(135deg,var(--wb1),var(--wb2));color:#fff;box-shadow:0 10px 22px rgba(122,0,204,.35)}
 
     .product.promo .pic{background:
       radial-gradient(120% 100% at 10% 0%,rgba(106,0,255,.45),transparent 60%),
@@ -88,14 +91,17 @@
     .promo-text{color:#e8ecff;font-weight:800;letter-spacing:.2px;line-height:1.25;font-size:15px}
     .promo-text small{display:block;color:#b8c2e8;font-weight:700;margin-top:6px;font-size:12px}
 
-    /* Вернул прежнюю «outline»-кнопку WB */
+    /* Нижняя кнопка — центр и аккуратный размер */
     .wb-outer{display:flex;justify-content:center;margin:12px 6px 4px}
     .btn.wb-outline{
+      width:100%;max-width:560px;
       border:2px solid transparent;
       background:
         linear-gradient(#0a0c12,#0a0c12) padding-box,
         linear-gradient(135deg,var(--wb1),var(--wb2)) border-box;
-      color:#fff;padding:12px 18px;border-radius:14px;font-weight:800;box-shadow:0 12px 26px rgba(122,0,204,.25)
+      color:#fff;padding:12px 16px;border-radius:14px;font-weight:800;
+      font-size:clamp(13px,3.3vw,16px);line-height:1.15;
+      text-align:center;box-shadow:0 12px 26px rgba(122,0,204,.25)
     }
 
     .footer{color:var(--muted);font-size:12px;padding:20px 20px 28px;text-align:center}
@@ -104,7 +110,7 @@
     @media (max-width:520px){
       .wrap{padding:18px}
       .scroller{margin-inline:-10px}
-      .rail{padding:10px 10px 12px;gap:10px}
+      .rail{padding:8px 10px 10px;gap:10px}
       .arrow{width:34px;height:38px}
       .fade-edge{width:28px}
       .product{
@@ -163,7 +169,6 @@
         </button>
 
         <div class="rail" id="rail" aria-label="Список тарифов, листайте вправо">
-          <!-- карточки как кликабельные ссылки -->
           <a class="product" href="https://www.wildberries.ru/catalog/300618366/detail.aspx?size=456790759" target="_blank" rel="noopener" aria-label="Сим карта МТС — открыть на Wildberries">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/83d892950724c66f0f660af181475067eb89fc2a447d20dd494a415858555cf2.jpg" alt="Сим карта МТС Полный Безлимитный интернет без ограничений"></div>
             <div class="body"><h3 class="name">Сим карта МТС Полный Безлимитный интернет без ограничений</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
@@ -196,7 +201,7 @@
         </div>
       </div>
 
-      <!-- Вернул нижнюю outline-кнопку -->
+      <!-- Центрированная кнопка -->
       <div class="wb-outer">
         <a class="btn wb-outline" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">Смотреть всю нашу линейку тарифов на Wildberries</a>
       </div>
@@ -206,73 +211,35 @@
   <footer class="footer"><small>© 2025 SIMHUB · Поддержка 7/7</small></footer>
 
   <script>
-    // все внешние ссылки — в новой вкладке
+    // внешние ссылки — в новой вкладке
     document.querySelectorAll('a[href^="http"]').forEach(a=>{ if(!a.target){ a.target="_blank"; a.rel="noopener"; } });
 
-    // Управление лентой по якорям: 0 → середина → конец (и обратно)
+    // Снэпы прокрутки: 0 → середина → конец
     const rail=document.getElementById('rail');
     const left=document.querySelector('.arrow.left');
     const right=document.querySelector('.arrow.right');
     const fadeL=document.querySelector('.fade-left');
     const fadeR=document.querySelector('.fade-right');
     const TOL=20; let snaps=[0], stopTimer=0;
-
     const getMax=()=>Math.max(0, rail.scrollWidth - rail.clientWidth);
 
-    function buildSnaps(){
-      const m=getMax();
-      snaps = m>0 ? [0, Math.round(m/2), m] : [0];
-    }
-
-    function nearestIndex(){
-      const x=rail.scrollLeft;
-      let idx=0, best=Infinity;
-      for(let i=0;i<snaps.length;i++){
-        const d=Math.abs(x-snaps[i]);
-        if(d<best){best=d;idx=i;}
-      }
-      return idx;
-    }
-
-    function stick(){
-      const m=getMax();
-      if(rail.scrollLeft<TOL) rail.scrollLeft=0;
-      if(rail.scrollLeft>m-TOL) rail.scrollLeft=m;
-    }
-
-    function upd(){
-      const m=getMax(), x=rail.scrollLeft, over=m>TOL, at0=x<=TOL, atEnd=x>=m-TOL;
-      left.classList.toggle('show', over && !at0);
-      right.classList.toggle('show', over && !atEnd);
-      fadeL.classList.toggle('show', over && !at0);
-      fadeR.classList.toggle('show', over && !atEnd);
-    }
-
-    function go(dir){
-      let idx = nearestIndex() + (dir>0?1:-1);
-      idx = Math.max(0, Math.min(snaps.length-1, idx));
-      rail.scrollTo({left: snaps[idx], behavior:'smooth'});
-      setTimeout(()=>{stick();upd();}, 380);
-    }
+    function buildSnaps(){ const m=getMax(); snaps = m>0 ? [0, Math.round(m/2), m] : [0]; }
+    function nearestIndex(){ const x=rail.scrollLeft; let idx=0,b=1e9; for(let i=0;i<snaps.length;i++){const d=Math.abs(x-snaps[i]); if(d<b){b=d;idx=i}} return idx; }
+    function stick(){ const m=getMax(); if(rail.scrollLeft<TOL) rail.scrollLeft=0; if(rail.scrollLeft>m-TOL) rail.scrollLeft=m; }
+    function upd(){ const m=getMax(), x=rail.scrollLeft, over=m>TOL, at0=x<=TOL, atEnd=x>=m-TOL;
+      left.classList.toggle('show', over && !at0); right.classList.toggle('show', over && !atEnd);
+      fadeL.classList.toggle('show', over && !at0); fadeR.classList.toggle('show', over && !atEnd); }
+    function go(dir){ let idx=nearestIndex()+(dir>0?1:-1); idx=Math.max(0,Math.min(snaps.length-1,idx));
+      rail.scrollTo({left:snaps[idx],behavior:'smooth'}); setTimeout(()=>{stick();upd()},380); }
 
     right.addEventListener('click',()=>go(1));
     left.addEventListener('click',()=>go(-1));
-
-    rail.addEventListener('scroll',()=>{
-      clearTimeout(stopTimer);
-      stopTimer=setTimeout(()=>{stick();upd();},120);
-    },{passive:true});
+    rail.addEventListener('scroll',()=>{ clearTimeout(stopTimer); stopTimer=setTimeout(()=>{stick();upd()},120); },{passive:true});
 
     function init(){
-      buildSnaps();
-      rail.scrollTo({left:0,behavior:'auto'});
-      stick(); upd();
-      rail.querySelectorAll('img').forEach(img=>{
-        if(!img.complete) img.addEventListener('load',()=>{buildSnaps();stick();upd();},{once:true});
-      });
-      requestAnimationFrame(upd);
-      setTimeout(()=>{buildSnaps();upd();},120);
-      setTimeout(()=>{buildSnaps();upd();},450);
+      buildSnaps(); rail.scrollTo({left:0,behavior:'auto'}); stick(); upd();
+      rail.querySelectorAll('img').forEach(img=>{ if(!img.complete) img.addEventListener('load',()=>{buildSnaps();stick();upd();},{once:true}); });
+      requestAnimationFrame(upd); setTimeout(()=>{buildSnaps();upd();},120); setTimeout(()=>{buildSnaps();upd();},450);
     }
     window.addEventListener('load',init);
     window.addEventListener('pageshow',init);

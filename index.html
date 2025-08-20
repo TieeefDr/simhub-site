@@ -33,10 +33,15 @@
     .subtitle{margin:.2rem 0 0;font-size:clamp(12px,3.5vw,15px);color:var(--muted)}
 
     /* CTA */
-    .cta-card{position:relative;margin-top:clamp(8px,3.5vh,28px);margin-bottom:18px;padding:clamp(16px,4.2vw,26px) clamp(14px,4vw,22px);text-align:center;border-radius:20px;border:1px solid rgba(255,255,255,.14);background:
-      radial-gradient(80% 120% at 0% 0%,rgba(106,0,255,.18),transparent 60%),
-      radial-gradient(80% 120% at 100% 0%,rgba(63,124,255,.18),transparent 60%),
-      linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
+    .cta-card{
+      position:relative;margin-top:clamp(8px,3.5vh,28px);margin-bottom:18px;
+      padding:clamp(16px,4.2vw,26px) clamp(14px,4vw,22px);text-align:center;border-radius:20px;
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(80% 120% at 0% 0%,rgba(106,0,255,.18),transparent 60%),
+        radial-gradient(80% 120% at 100% 0%,rgba(63,124,255,.18),transparent 60%),
+        linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
     .lead{margin:0 auto clamp(10px,3vw,16px);max-width:860px;font-size:clamp(15px,4.1vw,19px);line-height:1.35;font-weight:800}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;border-radius:16px;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px;border:0;transition:transform .08s,box-shadow .2s}
     .btn.cta{width:100%;white-space:nowrap;font-size:clamp(15px,4.2vw,18px);padding:clamp(12px,3.6vw,16px) 16px;background:linear-gradient(90deg,var(--cta),#23d287);color:#05270f;box-shadow:0 12px 26px rgba(22,193,114,.35)}
@@ -44,7 +49,7 @@
     .btn.cta svg{width:18px;height:18px}
     .micro{margin:10px 0 0;color:var(--muted);font-size:clamp(11px,3vw,12px)}
 
-    /* Витрина – отдельная секция */
+    /* Витрина */
     .market-wrap{margin-top:12px;border:1px solid rgba(255,255,255,.10);border-radius:22px;padding:14px 12px 14px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:0 18px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05)}
     .section-title{margin:0 6px 8px;color:#c9d3f3;font-weight:800;font-size:clamp(18px,5.2vw,24px)}
     .section-note{margin:0 6px 12px;color:#9fb0d7;font-size:12px}
@@ -65,7 +70,7 @@
     .arrow.show{opacity:1;pointer-events:auto}
     .arrow.left{left:6px}.arrow.right{right:6px}
 
-    /* Карточка = ссылка целиком */
+    /* Карточка */
     a.product{color:inherit;text-decoration:none}
     .product{display:flex;flex-direction:column;scroll-snap-align:start;min-width:240px;max-width:240px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--stroke);border-radius:16px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.3)}
     .product .pic{position:relative;width:100%;aspect-ratio:3/4;background:#0f1320}
@@ -83,45 +88,35 @@
     .promo-text{color:#e8ecff;font-weight:800;letter-spacing:.2px;line-height:1.25;font-size:15px}
     .promo-text small{display:block;color:#b8c2e8;font-weight:700;margin-top:6px;font-size:12px}
 
-    /* Плашка «До конца августа» (LTO) — базовый стиль */
-    .badge-lto{
-      position:absolute;left:12px;bottom:10px;z-index:3;
-      display:flex;align-items:center;gap:8px;
-      padding:8px 12px;background:linear-gradient(135deg,#ff4d4d,#ff9b2f);
-      color:#fff;font-weight:900;border-radius:999px;font-size:13px;
-      box-shadow:0 8px 22px rgba(255,85,0,.35);transform:translateY(0);
-      animation:lto-bob 2.4s ease-in-out infinite;
+    /* Нижняя кнопка */
+    .wb-outer{display:flex;justify-content:center;margin:12px 6px 4px}
+    .btn.wb-outline{
+      width:100%;max-width:560px;border:2px solid transparent;
+      background:linear-gradient(#0a0c12,#0a0c12) padding-box,
+                 linear-gradient(135deg,var(--wb1),var(--wb2)) border-box;
+      color:#fff;padding:12px 16px;border-radius:14px;font-weight:800;
+      font-size:clamp(13px,3.3vw,16px);line-height:1.15;text-align:center;
+      box-shadow:0 12px 26px rgba(122,0,204,.25)
     }
-    .badge-lto::before{
-      content:"";width:10px;height:10px;border-radius:50%;
-      background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.55);
-      animation:lto-pulse 1.6s ease-out infinite;
-    }
-    @keyframes lto-pulse{
-      0%{box-shadow:0 0 0 0 rgba(255,255,255,.6)}
-      70%{box-shadow:0 0 0 12px rgba(255,255,255,0)}
-      100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}
-    }
-    @keyframes lto-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 
-    /* «Облачко» сверху — фиксированный оверлей, не режется родителем */
-    .tooltip-float{
-      position:fixed;z-index:99999;left:50%;top:0;
-      transform:translate(-50%,-10px) scale(.98);
-      background:rgba(11,16,32,.96);color:#fff;border:1px solid rgba(255,255,255,.12);
-      border-radius:12px;padding:10px 12px;box-shadow:0 14px 40px rgba(0,0,0,.45);
-      max-width:min(92vw,520px);font-weight:800;font-size:13px;line-height:1.35;
-      pointer-events:none;opacity:0;visibility:hidden;transition:opacity .25s,transform .25s;
-    }
-    .tooltip-float::after{
-      content:"";position:absolute;bottom:-8px;left:50%;width:14px;height:14px;
-      transform:translateX(-50%) rotate(45deg);
-      background:rgba(11,16,32,.96);border-right:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)
-    }
-    .tooltip-float .hl{color:#ffd659}
-    .tooltip-float.show{opacity:1;visibility:visible;transform:translate(-50%,-14px) scale(1)}
+    .footer{color:var(--muted);font-size:12px;padding:20px 20px 28px;text-align:center}
 
-    /* Мобильная версия: плашка во всю ширину снизу изображения, тонкая */
+    /* --- ПЛАШКА «До конца августа» только для МТС --- */
+    .deal-wrap{padding:0 10px;margin-top:6px}                 /* пространство между фото и текстом */
+    .deal-badge{
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+      border-radius:999px;padding:8px 14px;font-weight:800;font-size:13px;
+      color:#fff;background:linear-gradient(135deg,#ff7a35,#ff9841);
+      box-shadow:0 8px 20px rgba(255,122,0,.25),inset 0 1px 0 rgba(255,255,255,.22);
+      animation:floatY 3.8s ease-in-out infinite
+    }
+    .deal-badge .ping{position:relative;width:10px;height:10px;border-radius:50%;background:#fff}
+    .deal-badge .ping::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,255,255,.55);animation:ping 1.8s ease-out infinite}
+    @keyframes ping{0%{transform:scale(.65);opacity:.75}75%{transform:scale(1.6);opacity:0}100%{opacity:0}}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+
+    /* Мобильные правки: ~2.5 карточки и тонкая плашка на всю ширину */
     @media (max-width:520px){
       .wrap{padding:18px}
       .scroller{margin-inline:-10px}
@@ -139,24 +134,9 @@
       .section-title{font-size:18px;margin:0 6px 6px}
       .section-note{font-size:11.5px}
 
-      .badge-lto{
-        left:0;right:0;bottom:0;border-radius:0 0 10px 10px;
-        justify-content:center;padding:6px 10px;font-size:12px;
-        animation:lto-bob-m 3s ease-in-out infinite;
-      }
-      @keyframes lto-bob-m{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+      .deal-wrap{padding:0 8px;margin-top:6px}
+      .deal-badge{padding:7px 12px;font-size:12px} /* тоньше и на всю ширину карточки */
     }
-
-    .wb-outer{display:flex;justify-content:center;margin:12px 6px 4px}
-    .btn.wb-outline{
-      width:100%;max-width:560px;border:2px solid transparent;
-      background:linear-gradient(#0a0c12,#0a0c12) padding-box,
-                 linear-gradient(135deg,var(--wb1),var(--wb2)) border-box;
-      color:#fff;padding:12px 16px;border-radius:14px;font-weight:800;
-      font-size:clamp(13px,3.3vw,16px);line-height:1.15;text-align:center;
-      box-shadow:0 12px 26px rgba(122,0,204,.25)
-    }
-    .footer{color:var(--muted);font-size:12px;padding:20px 20px 28px;text-align:center}
   </style>
 </head>
 <body>
@@ -178,7 +158,6 @@
     <!-- CTA -->
     <section class="cta-card">
       <p class="lead">Чтобы активировать SIM-карту, купленную на <b>Wildberries</b> и <b>OZON</b>, нажмите кнопку ниже</p>
-      <!-- ВАЖНО: самолёт НЕ трогаю -->
       <a class="btn cta" href="https://t.me/m/jLcwytf1MzIy" target="_blank" rel="noopener" aria-label="Перейти в Telegram для активации">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 3.01c-.33.01-.66.1-.96.25L3.73 11.1c-1.69.77-1.59 2.26.27 2.86l4.78 1.55 1.84 5.9c.33 1.05 1.68 1.18 2.3.22l2.62-4.04 5.08 3.75c.92.68 2.2.17 2.44-.95l3.38-15.7C26.77 2.58 24.91 1.7 22 3.01z" fill="currentColor"/></svg>
         Хочу активировать SIM-карту
@@ -203,45 +182,46 @@
         </button>
 
         <div class="rail" id="rail" aria-label="Список тарифов, листайте вправо">
-          <!-- 1) МТС — добавлена LTO-плашка -->
+          <!-- МТС + плашка -->
           <a class="product" href="https://www.wildberries.ru/catalog/300618366/detail.aspx?size=456790759" target="_blank" rel="noopener" aria-label="Сим карта МТС — открыть на Wildberries">
             <div class="pic">
               <img src="https://files.salebot.pro/uploads/message_files/83d892950724c66f0f660af181475067eb89fc2a447d20dd494a415858555cf2.jpg" alt="Сим карта МТС Полный Безлимитный интернет без ограничений">
-              <div class="badge-lto" id="lto-badge" aria-label="Тариф действует до конца августа">
-                До конца августа
+            </div>
+
+            <!-- Плашка прямо под фото (не перекрывает изображение) -->
+            <div class="deal-wrap">
+              <div class="deal-badge" role="note" aria-label="Тариф доступен до конца августа">
+                <span class="ping" aria-hidden="true"></span>
+                <span>До конца августа</span>
               </div>
             </div>
+
             <div class="body">
               <h3 class="name">Сим карта МТС Полный Безлимитный интернет без ограничений</h3>
               <div class="actions"><span class="btn wb">Заказать на WB</span></div>
             </div>
           </a>
 
-          <!-- 2) YOTA -->
           <a class="product" href="https://www.wildberries.ru/catalog/300618359/detail.aspx?size=456790752" target="_blank" rel="noopener" aria-label="Сим карта YOTA — открыть на Wildberries">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/c8d262a268e6715acbf9e718f99eb8b67236887bfe1f27ef127d9efd5fcd2901.jpg" alt="Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением"></div>
             <div class="body"><h3 class="name">Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
           </a>
 
-          <!-- 3) Т2 -->
           <a class="product" href="https://www.wildberries.ru/catalog/300619906/detail.aspx?size=456792371" target="_blank" rel="noopener" aria-label="Сим карта Т2 — открыть на Wildberries">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/114c6f07c149efec106ccd1784193c8e21bad1e7f559e98203d5fdbc29e12d23.jpg" alt="Сим карта Т2. Безлимитный интернет с ограничением"></div>
             <div class="body"><h3 class="name">Сим карта Т2. Безлимитный интернет с ограничением</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
           </a>
 
-          <!-- 4) Билайн -->
           <a class="product" href="https://www.wildberries.ru/catalog/300618361/detail.aspx?size=456790754" target="_blank" rel="noopener" aria-label="Сим карта Билайн — открыть на Wildberries">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/7859b8c656f918748fa99c9ee5cb4659f08e5ffc9e46714513a7c98ad5db3b05.jpg" alt="Сим карта Билайн. Безлимитный интернет с ограничением"></div>
             <div class="body"><h3 class="name">Сим карта Билайн. Безлимитный интернет с ограничением</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
           </a>
 
-          <!-- 5) Мегафон -->
           <a class="product" href="https://www.wildberries.ru/catalog/432671801/detail.aspx?targetUrl=EX" target="_blank" rel="noopener" aria-label="Сим карта Мегафон — открыть на Wildberries">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/065a652c8e030f6b1a1ebc685775fbd4db74bf870c92a001abea8f338aa536a1.jpg" alt="Сим карта Мегафон. Официальный тариф"></div>
             <div class="body"><h3 class="name">Сим карта Мегафон. Официальный тариф</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
           </a>
 
-          <!-- 6) Ссылка на всю линейку -->
           <a class="product promo" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener" aria-label="Вся линейка тарифов на Wildberries">
             <div class="pic"><div class="promo-text">Смотреть всю нашу линейку тарифов на Wildberries<small>Нажмите — откроется полный список</small></div></div>
             <div class="body"><h3 class="name">Вся линейка тарифов — на Wildberries</h3><div class="actions"><span class="btn wb">Перейти на WB</span></div></div>
@@ -293,73 +273,6 @@
     window.addEventListener('pageshow',init);
     window.addEventListener('resize',()=>{buildSnaps();stick();upd();});
     window.addEventListener('orientationchange',()=>setTimeout(()=>{buildSnaps();stick();upd();},300));
-
-    /* ---------- LTO tooltip: авто-появление на мобиле + hover на десктопе ---------- */
-    (function(){
-      const badge = document.querySelector('#lto-badge');
-      if(!badge) return;
-
-      function ensureTip(){
-        let tip = document.getElementById('lto-tip');
-        if(!tip){
-          tip = document.createElement('div');
-          tip.id = 'lto-tip';
-          tip.className = 'tooltip-float';
-          tip.innerHTML = '<span class="hl">Успейте заказать!</span> Тариф доступен только до конца августа. После этого предложение будет закрыто.';
-          document.body.appendChild(tip);
-        }
-        return tip;
-      }
-
-      function placeTip(){
-        const tip = ensureTip();
-        const r = badge.getBoundingClientRect();
-        const left = r.left + r.width/2;
-        const top  = Math.max(8, r.top - 12);
-        tip.style.left = left + 'px';
-        tip.style.top  = top  + 'px';
-      }
-
-      function showTip(ms=6500){
-        const tip = ensureTip();
-        placeTip();
-        tip.classList.add('show');
-        clearTimeout(tip._hideTimer);
-        tip._hideTimer = setTimeout(()=> tip.classList.remove('show'), ms);
-      }
-
-      // Десктоп: по ховеру
-      badge.addEventListener('mouseenter',()=>{ if(window.innerWidth>520) showTip(6500); });
-      badge.addEventListener('mouseleave',()=>{ const t=document.getElementById('lto-tip'); if(t) t.classList.remove('show'); });
-
-      // Мобайл: однократное авто-появление, когда пользователь пролистал вниз и плашка в зоне видимости
-      let shown=false;
-      function triggerOnce(){
-        if(shown || window.innerWidth>520) return;
-        const r = badge.getBoundingClientRect();
-        const visible = r.top < window.innerHeight*0.8 && r.bottom > 80;
-        if(visible){
-          shown = true;
-          setTimeout(()=>showTip(6800), 500); // через полсекунды после попадания в область
-          window.removeEventListener('scroll', triggerOnce);
-        }
-      }
-      if('IntersectionObserver' in window){
-        const io = new IntersectionObserver(entries=>{
-          entries.forEach(e=>{
-            if(e.isIntersecting && !shown && window.innerWidth<=520){
-              shown = true; setTimeout(()=>showTip(6800), 500); io.disconnect();
-            }
-          });
-        },{threshold:.6});
-        io.observe(badge);
-      }else{
-        window.addEventListener('scroll', triggerOnce, {passive:true});
-      }
-
-      window.addEventListener('resize',()=>{ const t=document.getElementById('lto-tip'); if(t && t.classList.contains('show')) placeTip(); });
-      window.addEventListener('orientationchange',()=>setTimeout(()=>{ const t=document.getElementById('lto-tip'); if(t && t.classList.contains('show')) placeTip(); },300));
-    })();
   </script>
 </body>
 </html>

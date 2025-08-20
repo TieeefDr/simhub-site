@@ -25,7 +25,7 @@
     .wrap{max-width:980px;margin:0 auto;padding:20px}
 
     /* Шапка — чуть ближе к CTA */
-    .header{padding-top:clamp(32px,8vh,68px)}        /* было больше — убрал пустоту */
+    .header{padding-top:clamp(32px,8vh,68px)}
     .brand{display:flex;align-items:center;gap:clamp(8px,2.5vw,16px)}
     .avatar{width:clamp(64px,12vw,110px);height:clamp(64px,12vw,110px);border-radius:50%;padding:3px;background:linear-gradient(135deg,#6a00ff,#3f7cff);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 0 0 2px rgba(255,255,255,.08)}
     .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
@@ -35,7 +35,7 @@
     /* CTA */
     .cta-card{
       position:relative;
-      margin-top:clamp(8px,3.5vh,28px);             /* стало меньше */
+      margin-top:clamp(8px,3.5vh,28px);
       margin-bottom:18px;
       padding:clamp(16px,4.2vw,26px) clamp(14px,4vw,22px);
       text-align:center;border-radius:20px;
@@ -90,6 +90,51 @@
       display:flex;align-items:center;justify-content:center;text-align:center;padding:14px}
     .promo-text{color:#e8ecff;font-weight:800;letter-spacing:.2px;line-height:1.25;font-size:15px}
     .promo-text small{display:block;color:#b8c2e8;font-weight:700;margin-top:6px;font-size:12px}
+
+    /* ===== Плашка «До конца августа» (только МТС) ===== */
+    .limited{position:absolute;left:10px;bottom:10px;z-index:5}
+    .limited-flag{
+      display:flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      font-weight:800;font-size:12px;color:#fff;
+      background:linear-gradient(135deg,#ff334e,#ff8a00);
+      box-shadow:0 8px 18px rgba(255,78,0,.3), inset 0 1px 0 rgba(255,255,255,.2);
+      animation:floatY 3.2s ease-in-out infinite;
+    }
+    .limited-flag .dot{
+      width:8px;height:8px;border-radius:50%;
+      background:#fff;position:relative;display:inline-block;
+    }
+    .limited-flag .dot::after{
+      content:"";position:absolute;inset:-6px;border-radius:50%;
+      box-shadow:0 0 0 0 rgba(255,255,255,.55);
+      animation:pulse 1.8s ease-out infinite;
+    }
+    @keyframes pulse{
+      0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}
+      70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}
+      100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}
+    }
+    @keyframes floatY{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-4px)}
+    }
+    .limited-tip{
+      position:absolute;left:0;bottom:calc(100% + 8px);
+      width:min(260px,80vw);padding:10px 12px;border-radius:12px;
+      background:rgba(15,19,32,.98);color:#e8ecff;font-weight:700;font-size:12px;line-height:1.3;
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow:0 12px 28px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);
+      opacity:0;transform:translateY(6px) scale(.98);pointer-events:none;transition:opacity .2s,transform .2s;z-index:10
+    }
+    .limited-tip::after{
+      content:"";position:absolute;left:18px;top:100%;
+      border:8px solid transparent;border-top-color:rgba(15,19,32,.98);
+      filter:drop-shadow(0 2px 1px rgba(0,0,0,.25));
+    }
+    .limited:hover .limited-tip,
+    .limited-flag:focus + .limited-tip{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+    .limited-tip .accent{color:#ffd84d}
 
     /* Нижняя кнопка — центр и аккуратный размер */
     .wb-outer{display:flex;justify-content:center;margin:12px 6px 4px}
@@ -169,31 +214,50 @@
         </button>
 
         <div class="rail" id="rail" aria-label="Список тарифов, листайте вправо">
+          <!-- МТС (добавлена плашка) -->
           <a class="product" href="https://www.wildberries.ru/catalog/300618366/detail.aspx?size=456790759" target="_blank" rel="noopener" aria-label="Сим карта МТС — открыть на Wildberries">
-            <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/83d892950724c66f0f660af181475067eb89fc2a447d20dd494a415858555cf2.jpg" alt="Сим карта МТС Полный Безлимитный интернет без ограничений"></div>
-            <div class="body"><h3 class="name">Сим карта МТС Полный Безлимитный интернет без ограничений</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
+            <div class="pic">
+              <img src="https://files.salebot.pro/uploads/message_files/83d892950724c66f0f660af181475067eb89fc2a447d20dd494a415858555cf2.jpg" alt="Сим карта МТС Полный Безлимитный интернет без ограничений">
+              <div class="limited">
+                <div class="limited-flag" tabindex="0" aria-describedby="tip-mts">
+                  <span class="dot"></span><span>До конца августа</span>
+                </div>
+                <div class="limited-tip" id="tip-mts" role="tooltip">
+                  <strong class="accent">Успейте заказать!</strong> Тариф доступен только до конца августа. После этого предложение будет закрыто.
+                </div>
+              </div>
+            </div>
+            <div class="body">
+              <h3 class="name">Сим карта МТС Полный Безлимитный интернет без ограничений</h3>
+              <div class="actions"><span class="btn wb">Заказать на WB</span></div>
+            </div>
           </a>
 
+          <!-- YOTA -->
           <a class="product" href="https://www.wildberries.ru/catalog/300618359/detail.aspx?size=456790752" target="_blank" rel="noopener" aria-label="Сим карта YOTA — открыть на Wildberries">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/c8d262a268e6715acbf9e718f99eb8b67236887bfe1f27ef127d9efd5fcd2901.jpg" alt="Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением"></div>
             <div class="body"><h3 class="name">Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
           </a>
 
+          <!-- Т2 -->
           <a class="product" href="https://www.wildberries.ru/catalog/300619906/detail.aspx?size=456792371" target="_blank" rel="noopener" aria-label="Сим карта Т2 — открыть на Wildberries">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/114c6f07c149efec106ccd1784193c8e21bad1e7f559e98203d5fdbc29e12d23.jpg" alt="Сим карта Т2. Безлимитный интернет с ограничением"></div>
             <div class="body"><h3 class="name">Сим карта Т2. Безлимитный интернет с ограничением</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
           </a>
 
+          <!-- Билайн -->
           <a class="product" href="https://www.wildberries.ru/catalog/300618361/detail.aspx?size=456790754" target="_blank" rel="noopener" aria-label="Сим карта Билайн — открыть на Wildberries">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/7859b8c656f918748fa99c9ee5cb4659f08e5ffc9e46714513a7c98ad5db3b05.jpg" alt="Сим карта Билайн. Безлимитный интернет с ограничением"></div>
             <div class="body"><h3 class="name">Сим карта Билайн. Безлимитный интернет с ограничением</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
           </a>
 
+          <!-- Мегафон -->
           <a class="product" href="https://www.wildberries.ru/catalog/432671801/detail.aspx?targetUrl=EX" target="_blank" rel="noopener" aria-label="Сим карта Мегафон — открыть на Wildberries">
             <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/065a652c8e030f6b1a1ebc685775fbd4db74bf870c92a001abea8f338aa536a1.jpg" alt="Сим карта Мегафон. Официальный тариф"></div>
             <div class="body"><h3 class="name">Сим карта Мегафон. Официальный тариф</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
           </a>
 
+          <!-- Промо-карточка -->
           <a class="product promo" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener" aria-label="Вся линейка тарифов на Wildberries">
             <div class="pic"><div class="promo-text">Смотреть всю нашу линейку тарифов на Wildberries<small>Нажмите — откроется полный список</small></div></div>
             <div class="body"><h3 class="name">Вся линейка тарифов — на Wildberries</h3><div class="actions"><span class="btn wb">Перейти на WB</span></div></div>

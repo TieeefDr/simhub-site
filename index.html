@@ -15,7 +15,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
     *{box-sizing:border-box} html,body{margin:0}
-    :root{--bg:#0a0c12;--text:#ecf1ff;--muted:#a7b6d9;--stroke:rgba(255,255,255,.12);--cta:#16c172;--wb1:#7a00cc;--wb2:#ff38a2}
+    :root{
+      --bg:#0a0c12;--text:#ecf1ff;--muted:#a7b6d9;--stroke:rgba(255,255,255,.12);
+      --cta:#16c172;--cta2:#23d287;--wb1:#7a00cc;--wb2:#ff38a2;
+      --orange1:#ff7a35;--orange2:#ff9841
+    }
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,'Noto Sans',sans-serif;background:#0a0c12;color:var(--text)}
     .bg{position:fixed;inset:0;z-index:-1;background:
       radial-gradient(1200px 600px at 10% -10%,rgba(106,0,255,.25),transparent 60%),
@@ -32,7 +36,7 @@
     .titles h1{margin:0;font-weight:800;font-size:clamp(20px,6vw,32px);line-height:1.1}
     .subtitle{margin:.2rem 0 0;font-size:clamp(12px,3.5vw,15px);color:var(--muted)}
 
-    /* CTA карточка + волны от кнопки */
+    /* CTA карточка + волны */
     .cta-card{
       --cta-y:60%;
       position:relative;margin-top:clamp(8px,3.5vh,28px);margin-bottom:18px;
@@ -47,44 +51,38 @@
     }
     .cta-card::after,.cta-card::before{
       content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-      background:
-        radial-gradient(circle at 50% var(--cta-y),
-          rgba(35,210,135,.25) 0%,
-          rgba(35,210,135,.14) 30%,
-          rgba(35,210,135,.07) 52%,
-          transparent 72%);
-      transform-origin:50% var(--cta-y);
-      opacity:0
+      background:radial-gradient(circle at 50% var(--cta-y),
+          rgba(35,210,135,.24) 0%, rgba(35,210,135,.12) 30%,
+          rgba(35,210,135,.06) 52%, transparent 72%);
+      transform-origin:50% var(--cta-y); opacity:0
     }
-    .cta-card::after{ animation:ctaWave 3.2s ease-out infinite }
-    .cta-card::before{ animation:ctaWave 3.2s ease-out infinite 1.6s }
-    @keyframes ctaWave{
-      0%{transform:scale(.90);opacity:0}
-      12%{opacity:.55}
-      55%{opacity:0}
-      100%{transform:scale(1.18);opacity:0}
-    }
+    .cta-card::after{animation:ctaWave 3.2s ease-out infinite}
+    .cta-card::before{animation:ctaWave 3.2s ease-out infinite 1.6s}
+    @keyframes ctaWave{0%{transform:scale(.9);opacity:0}12%{opacity:.55}55%{opacity:0}100%{transform:scale(1.18);opacity:0}}
 
     .lead{margin:0 auto clamp(10px,3vw,16px);max-width:860px;font-size:clamp(15px,4.1vw,19px);line-height:1.35;font-weight:800}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;border-radius:16px;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px;border:0;transition:transform .08s,box-shadow .2s}
+    .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;border-radius:16px;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px;border:0;transition:transform .08s,box-shadow .2s;isolation:isolate}
+    .btn svg{width:18px;height:18px}
+
+    /* Пульс-эффект для обеих кнопок */
+    .btn--pulse::before,.btn--pulse::after{
+      content:""; position:absolute; inset:-8px; border-radius:inherit; z-index:-1;
+      box-shadow:0 0 0 0 var(--pulse);
+      animation:pulse 3.4s ease-out infinite
+    }
+    .btn--pulse::after{animation-delay:1.7s}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 var(--pulse)}70%{box-shadow:0 0 0 26px rgba(0,0,0,0)}100%{box-shadow:0 0 0 26px rgba(0,0,0,0)}}
 
     .btn.cta{
-      position:relative;width:100%;white-space:nowrap;
-      font-size:clamp(15px,4.2vw,18px);
+      width:100%;white-space:nowrap;font-size:clamp(15px,4.2vw,18px);
       padding:clamp(12px,3.6vw,16px) 16px;color:#05270f;
-      background:linear-gradient(90deg,var(--cta),#23d287);
-      box-shadow:0 12px 26px rgba(22,193,114,.35);
-      animation:ctaPulse 3.8s ease-in-out infinite;will-change:transform,box-shadow
+      background:linear-gradient(90deg,var(--cta),var(--cta2));
+      box-shadow:0 12px 26px rgba(22,193,114,.35);--pulse:rgba(35,210,135,.38);
+      animation:ctaPulse 3.8s ease-in-out infinite
     }
     .btn.cta:hover{transform:translateY(-1px)}
-    .btn.cta svg{width:18px;height:18px}
-    @keyframes ctaPulse{
-      0%,100%{transform:scale(1); box-shadow:0 12px 26px rgba(22,193,114,.35)}
-      50%{transform:scale(1.01); box-shadow:0 16px 34px rgba(22,193,114,.45)}
-    }
-    @media (prefers-reduced-motion:reduce){
-      .cta-card::after,.cta-card::before,.btn.cta{animation:none!important}
-    }
+    @keyframes ctaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.01)}}
+    @media (prefers-reduced-motion:reduce){.cta-card::before,.cta-card::after,.btn--pulse{animation:none !important}}
 
     .micro{margin:10px 0 0;color:var(--muted);font-size:clamp(11px,3vw,12px)}
 
@@ -128,9 +126,8 @@
     .wb-outer{display:flex;justify-content:center;margin:12px 6px 4px}
     .btn.wb-outline{
       width:100%;max-width:560px;border:2px solid transparent;
-      background:
-        linear-gradient(#0a0c12,#0a0c12) padding-box,
-        linear-gradient(135deg,var(--wb1),var(--wb2)) border-box;
+      background:linear-gradient(#0a0c12,#0a0c12) padding-box,
+                 linear-gradient(135deg,var(--wb1),var(--wb2)) border-box;
       color:#fff;padding:12px 16px;border-radius:14px;font-weight:800;
       font-size:clamp(13px,3.3vw,16px);line-height:1.15;text-align:center;
       box-shadow:0 12px 26px rgba(122,0,204,.25)
@@ -138,13 +135,13 @@
 
     .footer{color:var(--muted);font-size:12px;padding:20px 20px 28px;text-align:center}
 
-    /* Плашка «До конца сентября» для МТС */
+    /* --- ПЛАШКА на карточке МТС --- */
     .deal-wrap{padding:0 10px;margin-top:6px}
     .deal-badge{
       display:flex;align-items:center;justify-content:center;gap:8px;
       width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-      border-radius:999px;padding:8px 14px;font-weight:800;font-size:13px;
-      color:#fff;background:linear-gradient(135deg,#ff7a35,#ff9841);
+      border-radius:999px;padding:8px 14px;font-weight:800;font-size:13px;color:#fff;
+      background:linear-gradient(135deg,var(--orange1),var(--orange2));
       box-shadow:0 8px 20px rgba(255,122,0,.25),inset 0 1px 0 rgba(255,255,255,.22);
       animation:floatY 3.8s ease-in-out infinite
     }
@@ -153,59 +150,28 @@
     @keyframes ping{0%{transform:scale(.65);opacity:.75}75%{transform:scale(1.6);opacity:0}100%{opacity:0}}
     @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
 
-    /* --- Партнёрская секция --- */
-    .partner-wrap{
-      margin-top:16px;border:1px solid rgba(255,255,255,.10);border-radius:22px;
-      padding:16px 12px 18px;
-      background:linear-gradient(180deg,rgba(255,165,90,.06),rgba(255,165,90,.03));
-      box-shadow:0 18px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05)
-    }
-    .partner-head h2{margin:0 6px 6px;color:#cfe2ff;font-weight:800;font-size:clamp(18px,5.2vw,24px)}
-    .partner-sub{margin:0 6px 12px;color:#9fb0d7;font-size:13.5px}
-    .partner-points{display:flex;flex-wrap:wrap;gap:8px;margin:0 6px 14px;padding:0;list-style:none}
-    .partner-points li{
-      display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;
-      font-weight:800;font-size:12.5px;color:#fff;
-      background:linear-gradient(135deg,rgba(255,122,53,.20),rgba(255,152,65,.26));
-      border:1px solid rgba(255,255,255,.12)
-    }
-    .partner-points svg{width:14px;height:14px;color:#ffd9b0}
-    .partner-cta-row{display:flex;justify-content:center;margin:6px 6px 6px}
-    .btn.partner-cta{
-      position:relative;width:100%;max-width:560px;border-radius:14px;
-      padding:12px 16px;font-weight:800;font-size:clamp(13px,3.3vw,16px);
-      background:linear-gradient(135deg,#ff7a35,#ff9841);color:#1e0c05;
-      box-shadow:0 12px 26px rgba(255,122,53,.25)
-    }
-    .partner-wrap.inview .btn.partner-cta::after{
-      content:"";position:absolute;inset:-2px;border-radius:inherit;
-      box-shadow:0 0 0 0 rgba(255,152,65,.40),0 0 0 0 rgba(255,152,65,.22);
-      animation:ring 5s ease-out infinite
-    }
-    @keyframes ring{
-      0%{box-shadow:0 0 0 0 rgba(255,152,65,.40),0 0 0 0 rgba(255,152,65,.22)}
-      55%{box-shadow:0 0 0 12px rgba(255,152,65,0),0 0 0 24px rgba(255,152,65,0)}
-      100%{box-shadow:0 0 0 0 rgba(255,152,65,0),0 0 0 0 rgba(255,152,65,0)}
-    }
-    @media (prefers-reduced-motion:reduce){
-      .partner-wrap.inview .btn.partner-cta::after{animation:none!important}
-    }
+    /* --- Партнёрская программа --- */
+    .partner{margin-top:18px;border:1px solid rgba(255,255,255,.10);border-radius:22px;padding:16px 14px 18px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:0 18px 48px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.05)}
+    .partner h2{margin:0 6px 8px;font-weight:800;font-size:clamp(20px,5.5vw,28px)}
+    .partner .sub{margin:0 6px 16px;color:#c9d3f3;font-size:clamp(13px,3.8vw,16px)}
+    .features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 6px 14px;padding:0;list-style:none}
+    .feat{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;font-weight:800;
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--stroke)}
+    .feat i{display:inline-flex;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#24d381,#11b965);align-items:center;justify-content:center;box-shadow:inset 0 0 0 2px rgba(0,0,0,.15)}
+    .feat i svg{width:12px;height:12px;fill:#05270f}
+    /* аккуратная единая «таблетка» для комиссии */
+    .feat.split{justify-content:flex-start;gap:10px;white-space:nowrap}
+    .feat.split em{font-style:normal;opacity:.9;margin-left:auto}
+    .feat b{font-weight:800}
 
-    .partner-acc{margin:10px 6px 0}
-    .partner-acc summary{
-      list-style:none;cursor:pointer;user-select:none;
-      padding:12px 14px;border-radius:12px;
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.10);
-      color:#e8eeff;font-weight:800;display:flex;align-items:center;justify-content:space-between
-    }
-    .partner-acc summary::-webkit-details-marker{display:none}
-    .partner-acc .chev{transition:transform .18s}
-    .partner-acc[open] .chev{transform:rotate(180deg)}
-    .partner-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
-    .partner-steps figure{margin:0;border:1px solid var(--stroke);border-radius:16px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));box-shadow:0 12px 28px rgba(0,0,0,.24)}
-    .partner-steps img{width:100%;height:auto;display:block}
-    .partner-steps figcaption{padding:10px 12px;font-size:13px;color:#dbe3ff;font-weight:700}
+    .btn.partner{width:100%;background:linear-gradient(90deg,var(--orange1),var(--orange2));color:#3b210f;padding:14px 16px;border-radius:14px;font-size:clamp(14px,4vw,17px);box-shadow:0 14px 30px rgba(255,140,70,.35);--pulse:rgba(255,140,70,.36)}
+    .how{margin-top:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:10px}
+    .how > summary{cursor:pointer;list-style:none;font-weight:800;color:#e4ebff}
+    .how > summary::-webkit-details-marker{display:none}
+    .steps{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:14px}
+    .step figure{margin:0;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--stroke);border-radius:16px;overflow:hidden}
+    .step img{width:100%;height:auto;display:block}
+    .step figcaption{padding:10px 12px;font-weight:800}
 
     /* Мобильные правки */
     @media (max-width:520px){
@@ -230,7 +196,9 @@
       .deal-badge .ping{width:8px;height:8px}
       .deal-badge .ping::after{inset:-5px;border-width:1.5px}
 
-      .btn.partner-cta{width:100%}
+      .features{grid-template-columns:1fr}
+      .feat{font-size:13px;padding:10px 12px}
+      .feat.split{font-size:13px}
     }
   </style>
 </head>
@@ -253,10 +221,12 @@
     <!-- CTA -->
     <section class="cta-card">
       <p class="lead">Чтобы активировать SIM-карту, купленную на <b>Wildberries</b> и <b>OZON</b>, нажмите кнопку ниже</p>
-      <a class="btn cta" href="https://t.me/m/jLcwytf1MzIy" target="_blank" rel="noopener" aria-label="Перейти в Telegram для активации">
+
+      <a class="btn cta btn--pulse" href="https://t.me/m/jLcwytf1MzIy" target="_blank" rel="noopener" aria-label="Перейти в Telegram для активации">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 3.01c-.33.01-.66.1-.96.25L3.73 11.1c-1.69.77-1.59 2.26.27 2.86l4.78 1.55 1.84 5.9c.33 1.05 1.68 1.18 2.3.22l2.62-4.04 5.08 3.75c.92.68 2.2.17 2.44-.95l3.38-15.7C26.77 2.58 24.91 1.7 22 3.01z" fill="currentColor"/></svg>
         Хочу активировать SIM-карту
       </a>
+
       <p class="micro">Переход в Telegram для быстрой активации.</p>
     </section>
 
@@ -327,59 +297,62 @@
     </section>
 
     <!-- Партнёрская программа -->
-    <section class="partner-wrap" id="partners">
-      <div class="partner-head">
-        <h2>Партнёрская программа SIMHUB</h2>
-        <p class="partner-sub">Зарабатывайте на продаже номеров и пополнениях — <b>без вложений</b>.</p>
-      </div>
+    <section class="partner">
+      <h2>Партнёрская программа SIMHUB</h2>
+      <p class="sub">Зарабатывайте на продаже номеров и пополнениях — <b>без вложений</b>.</p>
 
-      <ul class="partner-points">
-        <li>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+      <ul class="features">
+        <li class="feat">
+          <i><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></i>
           Доступ к базе <b>260 000</b> номеров
         </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+        <li class="feat">
+          <i><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></i>
           Бесплатные SIM-карты
         </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-          Комиссия <b>40–55%</b> с первого пополнения
+        <li class="feat split">
+          <i><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></i>
+          <span>Комиссия <b>40–55%</b></span>
+          <em>с первого пополнения</em>
         </li>
       </ul>
 
-      <div class="partner-cta-row">
-        <a class="btn partner-cta" href="https://reg.agsvyazi.ru/bW1vJDrdbn/?utm_source=simhub-site&utm_medium=cta&utm_campaign=partners" target="_blank" rel="noopener" aria-label="Перейти к регистрации в партнёрской программе">Хочу стать партнёром</a>
-      </div>
+      <a class="btn partner btn--pulse" href="https://reg.agsvyazi.ru/bW1vJDrdbn/" target="_blank" rel="noopener">Хочу стать партнёром</a>
 
-      <details class="partner-acc">
-        <summary>Как это работает? <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 10l5 5 5-5H7z"/></svg></summary>
-        <div class="partner-steps">
-          <figure>
-            <img loading="lazy" decoding="async" src="https://files.salebot.pro/uploads/message_files/2bef0ac9b89a33b2039387310b70da8f601f7eca529605d30663340f3686d2c1.jpg" alt="Шаг 1 — Зарегистрируйся">
-            <figcaption>1. Зарегистрируйся — это займёт меньше минуты</figcaption>
-          </figure>
-          <figure>
-            <img loading="lazy" decoding="async" src="https://files.salebot.pro/uploads/message_files/2bef0ac9b89a33b2039387310b70da8f601f7eca529605d30663340f3686d2c1.jpg" alt="Шаг 2 — Получи доступ к базе">
-            <figcaption>2. Получи доступ к базе из 260 000 номеров</figcaption>
-          </figure>
-          <figure>
-            <img loading="lazy" decoding="async" src="https://files.salebot.pro/uploads/message_files/d30baff4c6679ff8540fc76dc2ba4dbed470da459350b7d259b2b8208d3f8db0.jpg" alt="Шаг 3 — Бесплатные SIM-карты">
-            <figcaption>3. Получи бесплатные SIM-карты и найди первых клиентов</figcaption>
-          </figure>
-          <figure>
-            <img loading="lazy" decoding="async" src="https://files.salebot.pro/uploads/message_files/7a1c52e002520b8ceccbf558ddb1dcc47c14c77a2052b3446a2d4d4d50848c17.jpg" alt="Шаг 4 — Комиссия с первого пополнения">
-            <figcaption>4. Получай все деньги с продажи + <b>40–55%</b> с первого пополнения</figcaption>
-          </figure>
-          <figure>
-            <img loading="lazy" decoding="async" src="https://files.salebot.pro/uploads/message_files/7d1c6444175e5758174e2ba8c9359f492f047b7d483e1e94140e7b228971dda5.jpg" alt="Шаг 5 — Вывод средств">
-            <figcaption>5. Выводи заработок: от 100 ₽ на телефон, от 3000 ₽ на карту</figcaption>
-          </figure>
-          <figure>
-            <img loading="lazy" decoding="async" src="https://files.salebot.pro/uploads/message_files/08b6bcd9149d52ed8fcea808e5f9ddec88925eb1a0919f7bc71d9d7188eeb862.jpg" alt="Стань партнёром SIMHUB">
-            <figcaption>Бонус: материалы и поддержка для старта</figcaption>
-          </figure>
-        </div>
+      <details class="how">
+        <summary>Как это работает?</summary>
+        <ol class="steps">
+          <li class="step">
+            <figure>
+              <img src="https://files.salebot.pro/uploads/message_files/2bef0ac9b89a33b2039387310b70da8f601f7eca529605d30663340f3686d2c1.jpg" alt="1. Зарегистрируйся — это займёт меньше минуты">
+              <figcaption>1. Зарегистрируйся — это займёт меньше минуты</figcaption>
+            </figure>
+          </li>
+          <li class="step">
+            <figure>
+              <img src="https://files.salebot.pro/uploads/message_files/d30baff4c6679ff8540fc76dc2ba4dbed470da459350b7d259b2b8208d3f8db0.jpg" alt="2. Получи доступ к базе из 260 000 номеров">
+              <figcaption>2. Получи доступ к базе из 260 000 номеров</figcaption>
+            </figure>
+          </li>
+          <li class="step">
+            <figure>
+              <img src="https://files.salebot.pro/uploads/message_files/7a1c52e002520b8ceccbf558ddb1dcc47c14c77a2052b3446a2d4d4d50848c17.jpg" alt="3. Получи бесплатные SIM-карты">
+              <figcaption>3. Получи бесплатные SIM-карты</figcaption>
+            </figure>
+          </li>
+          <li class="step">
+            <figure>
+              <img src="https://files.salebot.pro/uploads/message_files/7d1c6444175e5758174e2ba8c9359f492f047b7d483e1e94140e7b228971dda5.jpg" alt="4. Продавай номера, получай 40–55%">
+              <figcaption>4. Продавай номера, получай <b>40–55%</b></figcaption>
+            </figure>
+          </li>
+          <li class="step">
+            <figure>
+              <img src="https://files.salebot.pro/uploads/message_files/08b6bcd9149d52ed8fcea808e5f9ddec88925eb1a0919f7bc71d9d7188eeb862.jpg" alt="5. Выводи заработок">
+              <figcaption>5. Выводи заработок</figcaption>
+            </figure>
+          </li>
+        </ol>
       </details>
     </section>
   </main>
@@ -387,10 +360,10 @@
   <footer class="footer"><small>© 2025 SIMHUB · Поддержка 7/7</small></footer>
 
   <script>
-    // внешние ссылки — в новой вкладке
+    // все внешние ссылки — в новой вкладке
     document.querySelectorAll('a[href^="http"]').forEach(a=>{ if(!a.target){ a.target="_blank"; a.rel="noopener"; } });
 
-    // Снэпы прокрутки: 0 → середина → конец
+    // Крайние позиции карусели
     const rail=document.getElementById('rail');
     const left=document.querySelector('.arrow.left');
     const right=document.querySelector('.arrow.right');
@@ -405,7 +378,6 @@
     function upd(){ const m=getMax(), x=rail.scrollLeft, over=m>TOL, at0=x<=TOL, atEnd=x>=m-TOL;
       left.classList.toggle('show', over && !at0); right.classList.toggle('show', over && !atEnd);
       fadeL.classList.toggle('show', over && !at0); fadeR.classList.toggle('show', over && !atEnd); }
-
     function go(dir){ let idx=nearestIndex()+(dir>0?1:-1); idx=Math.max(0,Math.min(snaps.length-1,idx));
       rail.scrollTo({left:snaps[idx],behavior:'smooth'}); setTimeout(()=>{stick();upd()},380); }
 
@@ -424,20 +396,6 @@
       card.style.setProperty('--cta-y', cy.toFixed(2)+'%');
     }
 
-    // Пульсация партнёрской кнопки — только в зоне видимости + событие Plausible
-    function observePartner(){
-      const sec=document.querySelector('.partner-wrap');
-      if(!sec) return;
-      const btn=sec.querySelector('.partner-cta');
-      const io=new IntersectionObserver((ents)=>{
-        ents.forEach(e=>sec.classList.toggle('inview', e.isIntersecting));
-      },{threshold:.5});
-      io.observe(sec);
-      if(btn){
-        btn.addEventListener('click',()=>{ if(window.plausible){ try{ window.plausible('partner_cta_click'); }catch(e){} }});
-      }
-    }
-
     function init(){
       buildSnaps(); rail.scrollTo({left:0,behavior:'auto'}); stick(); upd();
       rail.querySelectorAll('img').forEach(img=>{ if(!img.complete) img.addEventListener('load',()=>{buildSnaps();stick();upd();},{once:true}); });
@@ -448,8 +406,6 @@
       setTimeout(setCtaWaveCenter,400);
       window.addEventListener('resize',setCtaWaveCenter,{passive:true});
       window.addEventListener('orientationchange',()=>setTimeout(setCtaWaveCenter,300));
-
-      observePartner();
     }
     window.addEventListener('load',init);
     window.addEventListener('pageshow',init);

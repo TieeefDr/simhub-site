@@ -34,19 +34,65 @@
 
     /* CTA */
     .cta-card{
-      position:relative;margin-top:clamp(8px,3.5vh,28px);margin-bottom:18px;
-      padding:clamp(16px,4.2vw,26px) clamp(14px,4vw,22px);text-align:center;border-radius:20px;
+      --cta-y:60%; /* сюда положим точный Y центра кнопки из JS */
+      position:relative;
+      margin-top:clamp(8px,3.5vh,28px);margin-bottom:18px;
+      padding:clamp(16px,4.2vw,26px) clamp(14px,4vw,22px);
+      text-align:center;border-radius:20px;
       border:1px solid rgba(255,255,255,.14);
       background:
         radial-gradient(80% 120% at 0% 0%,rgba(106,0,255,.18),transparent 60%),
         radial-gradient(80% 120% at 100% 0%,rgba(63,124,255,.18),transparent 60%),
         linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
-      box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
+      box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);
+      overflow:hidden
+    }
+    /* волны от кнопки на всю карточку */
+    .cta-card::after,.cta-card::before{
+      content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+      background:
+        radial-gradient(circle at 50% var(--cta-y),
+          rgba(35,210,135,.25) 0%,
+          rgba(35,210,135,.14) 30%,
+          rgba(35,210,135,.07) 52%,
+          transparent 72%);
+      transform-origin:50% var(--cta-y);
+      opacity:0
+    }
+    .cta-card::after{ animation:ctaWave 3.2s ease-out infinite }
+    .cta-card::before{ animation:ctaWave 3.2s ease-out infinite 1.6s }
+    @keyframes ctaWave{
+      0%{transform:scale(.90);opacity:0}
+      12%{opacity:.55}
+      55%{opacity:0}
+      100%{transform:scale(1.18);opacity:0}
+    }
+
     .lead{margin:0 auto clamp(10px,3vw,16px);max-width:860px;font-size:clamp(15px,4.1vw,19px);line-height:1.35;font-weight:800}
+
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;border-radius:16px;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px;border:0;transition:transform .08s,box-shadow .2s}
-    .btn.cta{width:100%;white-space:nowrap;font-size:clamp(15px,4.2vw,18px);padding:clamp(12px,3.6vw,16px) 16px;background:linear-gradient(90deg,var(--cta),#23d287);color:#05270f;box-shadow:0 12px 26px rgba(22,193,114,.35)}
+
+    .btn.cta{
+      position:relative;
+      width:100%;white-space:nowrap;
+      font-size:clamp(15px,4.2vw,18px);
+      padding:clamp(12px,3.6vw,16px) 16px;
+      color:#05270f;
+      background:linear-gradient(90deg,var(--cta),#23d287);
+      box-shadow:0 12px 26px rgba(22,193,114,.35);
+      animation:ctaPulse 3.8s ease-in-out infinite;
+      will-change:transform,box-shadow
+    }
     .btn.cta:hover{transform:translateY(-1px)}
     .btn.cta svg{width:18px;height:18px}
+    @keyframes ctaPulse{
+      0%,100%{transform:scale(1); box-shadow:0 12px 26px rgba(22,193,114,.35)}
+      50%{transform:scale(1.01); box-shadow:0 16px 34px rgba(22,193,114,.45)}
+    }
+    @media (prefers-reduced-motion:reduce){
+      .cta-card::after,.cta-card::before,.btn.cta{animation:none!important}
+    }
+
     .micro{margin:10px 0 0;color:var(--muted);font-size:clamp(11px,3vw,12px)}
 
     /* Витрина */
@@ -54,7 +100,6 @@
     .section-title{margin:0 6px 8px;color:#c9d3f3;font-weight:800;font-size:clamp(18px,5.2vw,24px)}
     .section-note{margin:0 6px 12px;color:#9fb0d7;font-size:12px}
 
-    /* Лента */
     .scroller{position:relative}
     .rail{display:flex;gap:12px;overflow-x:auto;padding:6px 6px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
     .rail::-webkit-scrollbar{height:10px}
@@ -70,7 +115,6 @@
     .arrow.show{opacity:1;pointer-events:auto}
     .arrow.left{left:6px}.arrow.right{right:6px}
 
-    /* Карточка */
     a.product{color:inherit;text-decoration:none}
     .product{display:flex;flex-direction:column;scroll-snap-align:start;min-width:240px;max-width:240px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--stroke);border-radius:16px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.3)}
     .product .pic{position:relative;width:100%;aspect-ratio:3/4;background:#0f1320}
@@ -88,7 +132,6 @@
     .promo-text{color:#e8ecff;font-weight:800;letter-spacing:.2px;line-height:1.25;font-size:15px}
     .promo-text small{display:block;color:#b8c2e8;font-weight:700;margin-top:6px;font-size:12px}
 
-    /* Нижняя кнопка */
     .wb-outer{display:flex;justify-content:center;margin:12px 6px 4px}
     .btn.wb-outline{
       width:100%;max-width:560px;border:2px solid transparent;
@@ -101,8 +144,8 @@
 
     .footer{color:var(--muted);font-size:12px;padding:20px 20px 28px;text-align:center}
 
-    /* --- ПЛАШКА «До конца сентября» только для МТС --- */
-    .deal-wrap{padding:0 10px;margin-top:6px}                 /* пространство между фото и текстом */
+    /* --- ПЛАШКА «До конца августа» только для МТС --- */
+    .deal-wrap{padding:0 10px;margin-top:6px}
     .deal-badge{
       display:flex;align-items:center;justify-content:center;gap:8px;
       width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
@@ -116,7 +159,7 @@
     @keyframes ping{0%{transform:scale(.65);opacity:.75}75%{transform:scale(1.6);opacity:0}100%{opacity:0}}
     @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
 
-    /* Мобильные правки: ~2.5 карточки и тонкая плашка на всю ширину */
+    /* Мобильные правки: компактная плашка */
     @media (max-width:520px){
       .wrap{padding:18px}
       .scroller{margin-inline:-10px}
@@ -135,7 +178,13 @@
       .section-note{font-size:11.5px}
 
       .deal-wrap{padding:0 8px;margin-top:6px}
-      .deal-badge{padding:7px 12px;font-size:12px} /* тоньше и на всю ширину карточки */
+      .deal-badge{
+        padding:6px 10px;
+        font-size:11.5px;            /* стало меньше на мобиле */
+        gap:6px
+      }
+      .deal-badge .ping{width:8px;height:8px}
+      .deal-badge .ping::after{inset:-5px;border-width:1.5px}
     }
   </style>
 </head>
@@ -187,15 +236,12 @@
             <div class="pic">
               <img src="https://files.salebot.pro/uploads/message_files/e46316bbc0f829cbcdb07bd5d28933b2b4cc48aa494ac12d2131fb6fe5e76600.JPEG" alt="Сим карта МТС Полный Безлимитный интернет без ограничений">
             </div>
-
-            <!-- Плашка прямо под фото (не перекрывает изображение) -->
             <div class="deal-wrap">
-              <div class="deal-badge" role="note" aria-label="Тариф доступен до конца сентября">
+              <div class="deal-badge" role="note" aria-label="Тариф доступен до конца августа">
                 <span class="ping" aria-hidden="true"></span>
-                <span>До конца сентября</span>
+                <span>До конца августа</span>
               </div>
             </div>
-
             <div class="body">
               <h3 class="name">Сим карта МТС Полный Безлимитный интернет без ограничений</h3>
               <div class="actions"><span class="btn wb">Заказать на WB</span></div>
@@ -229,7 +275,6 @@
         </div>
       </div>
 
-      <!-- Центрированная кнопка -->
       <div class="wb-outer">
         <a class="btn wb-outline" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">Смотреть всю нашу линейку тарифов на Wildberries</a>
       </div>
@@ -264,10 +309,27 @@
     left.addEventListener('click',()=>go(-1));
     rail.addEventListener('scroll',()=>{ clearTimeout(stopTimer); stopTimer=setTimeout(()=>{stick();upd()},120); },{passive:true});
 
+    // Центр волн на карточке = центр кнопки
+    function setCtaWaveCenter(){
+      const card=document.querySelector('.cta-card');
+      const btn=document.querySelector('.cta-card .btn.cta');
+      if(!card||!btn) return;
+      const rc=card.getBoundingClientRect();
+      const rb=btn.getBoundingClientRect();
+      const cy=((rb.top + rb.height/2) - rc.top)/rc.height*100;
+      card.style.setProperty('--cta-y', cy.toFixed(2)+'%');
+    }
+
     function init(){
       buildSnaps(); rail.scrollTo({left:0,behavior:'auto'}); stick(); upd();
       rail.querySelectorAll('img').forEach(img=>{ if(!img.complete) img.addEventListener('load',()=>{buildSnaps();stick();upd();},{once:true}); });
-      requestAnimationFrame(upd); setTimeout(()=>{buildSnaps();upd();},120); setTimeout(()=>{buildSnaps();upd();},450);
+      requestAnimationFrame(upd);
+
+      setCtaWaveCenter();
+      setTimeout(setCtaWaveCenter,150); // на случай подгрузки шрифтов
+      setTimeout(setCtaWaveCenter,400);
+      window.addEventListener('resize',setCtaWaveCenter,{passive:true});
+      window.addEventListener('orientationchange',()=>setTimeout(setCtaWaveCenter,300));
     }
     window.addEventListener('load',init);
     window.addEventListener('pageshow',init);

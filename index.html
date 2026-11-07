@@ -1,460 +1,82 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Активация SIM-карты | SIMHUB</title>
-  <meta name="description" content="Активация SIM-карты, купленной на Wildberries и OZON. Мини-витрина тарифов с быстрыми ссылками на WB.">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://tieeefdr.github.io/simhub-site/SIM/">
-  <meta property="og:title" content="Активация SIM-карты — SIMHUB">
-  <meta property="og:description" content="Активация SIM-карты и линейка тарифов с ссылками на Wildberries.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tieeefdr.github.io/simhub-site/SIM/">
-  <meta property="og:image" content="https://files.salebot.pro/uploads/message_files/f9fc0e5f2651ef2489fe06a329000c4f1c2c315974d856425a015c96c95f4c68.jpg">
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
-  <style>
-    *{box-sizing:border-box} html,body{margin:0}
-    :root{--bg:#0a0c12;--text:#ecf1ff;--muted:#a7b6d9;--stroke:rgba(255,255,255,.12);--cta:#16c172;--wb1:#7a00cc;--wb2:#ff38a2}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,'Noto Sans',sans-serif;background:#0a0c12;color:var(--text)}
-    .bg{position:fixed;inset:0;z-index:-1;background:
-      radial-gradient(1200px 600px at 10% -10%,rgba(106,0,255,.25),transparent 60%),
-      radial-gradient(800px 500px at 100% 0%,rgba(63,124,255,.18),transparent 55%),
-      radial-gradient(700px 600px at 20% 100%,rgba(106,0,255,.15),transparent 55%),
-      linear-gradient(135deg,#0b1020 0%,#10152b 100%)}
-    .wrap{max-width:980px;margin:0 auto;padding:20px}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Активация SIM-карты | SIMHUB</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://simhub.market/sim/">
+<!--
+  Old address. Printed QR codes open tieeefdr.github.io/simhub-site/, so this
+  page (also served as 404.html for any old path such as /SIM/) sends people on
+  to https://simhub.market/sim/ with the same query.
 
-    /* Шапка */
-    .header{padding-top:clamp(32px,8vh,68px)}
-    .brand{display:flex;align-items:center;gap:clamp(8px,2.5vw,16px)}
-    .avatar{width:clamp(64px,12vw,110px);height:clamp(64px,12vw,110px);border-radius:50%;padding:3px;background:linear-gradient(135deg,#6a00ff,#3f7cff);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 0 0 2px rgba(255,255,255,.08)}
-    .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-    .titles h1{margin:0;font-weight:800;font-size:clamp(20px,6vw,32px);line-height:1.1}
-    .subtitle{margin:.2rem 0 0;font-size:clamp(12px,3.5vw,15px);color:var(--muted)}
+  Source tag: nothing but a printed QR leads here, so every arrival without an
+  allowed src gets src=qr, whatever the referrer. (Android opens scans from
+  Google Lens or the Google app with an android-app:// referrer, and a
+  dynamic-QR service may show its own page first: a referrer test would turn
+  those scans into #site.)
 
-    /* CTA карточка + волны от кнопки */
-    .cta-card{
-      --cta-y:60%;
-      position:relative;margin-top:clamp(8px,3.5vh,28px);margin-bottom:18px;
-      padding:clamp(16px,4.2vw,26px) clamp(14px,4vw,22px);text-align:center;border-radius:20px;
-      border:1px solid rgba(255,255,255,.14);
-      background:
-        radial-gradient(80% 120% at 0% 0%,rgba(106,0,255,.18),transparent 60%),
-        radial-gradient(80% 120% at 100% 0%,rgba(63,124,255,.18),transparent 60%),
-        linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
-      box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);
-      overflow:hidden
-    }
-    .cta-card::after,.cta-card::before{
-      content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-      background:
-        radial-gradient(circle at 50% var(--cta-y),
-          rgba(35,210,135,.25) 0%,
-          rgba(35,210,135,.14) 30%,
-          rgba(35,210,135,.07) 52%,
-          transparent 72%);
-      transform-origin:50% var(--cta-y);
-      opacity:0
-    }
-    .cta-card::after{ animation:ctaWave 3.2s ease-out infinite }
-    .cta-card::before{ animation:ctaWave 3.2s ease-out infinite 1.6s }
-    @keyframes ctaWave{
-      0%{transform:scale(.90);opacity:0}
-      12%{opacity:.55}
-      55%{opacity:0}
-      100%{transform:scale(1.18);opacity:0}
-    }
+  Domain safety: simhub.market has been blocked before. Before leaving, the
+  script loads one small picture from it. Only if that works does it go on
+  with location.replace. If it fails or takes too long, the buyer stays here,
+  where the direct Telegram button works without simhub.market.
 
-    .lead{margin:0 auto clamp(10px,3vw,16px);max-width:860px;font-size:clamp(15px,4.1vw,19px);line-height:1.35;font-weight:800}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 22px;border-radius:16px;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px;border:0;transition:transform .08s,box-shadow .2s}
-
-    .btn.cta{
-      position:relative;width:100%;white-space:nowrap;
-      font-size:clamp(15px,4.2vw,18px);
-      padding:clamp(12px,3.6vw,16px) 16px;color:#05270f;
-      background:linear-gradient(90deg,var(--cta),#23d287);
-      box-shadow:0 12px 26px rgba(22,193,114,.35);
-      animation:ctaPulse 3.8s ease-in-out infinite;will-change:transform,box-shadow
-    }
-    .btn.cta:hover{transform:translateY(-1px)}
-    .btn.cta svg{width:18px;height:18px}
-    @keyframes ctaPulse{
-      0%,100%{transform:scale(1); box-shadow:0 12px 26px rgba(22,193,114,.35)}
-      50%{transform:scale(1.01); box-shadow:0 16px 34px rgba(22,193,114,.45)}
-    }
-    @media (prefers-reduced-motion:reduce){
-      .cta-card::after,.cta-card::before,.btn.cta{animation:none!important}
-    }
-
-    .micro{margin:10px 0 0;color:var(--muted);font-size:clamp(11px,3vw,12px)}
-
-    /* Витрина */
-    .market-wrap{margin-top:12px;border:1px solid rgba(255,255,255,.10);border-radius:22px;padding:14px 12px 14px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:0 18px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05)}
-    .section-title{margin:0 6px 8px;color:#c9d3f3;font-weight:800;font-size:clamp(18px,5.2vw,24px)}
-    .section-note{margin:0 6px 12px;color:#9fb0d7;font-size:12px}
-
-    .scroller{position:relative}
-    .rail{display:flex;gap:12px;overflow-x:auto;padding:6px 6px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
-    .rail::-webkit-scrollbar{height:10px}
-    .rail::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:10px}
-    .rail::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:10px}
-    .fade-edge{position:absolute;top:0;bottom:0;width:44px;pointer-events:none;opacity:0;transition:opacity .18s}
-    .fade-left{left:0;background:linear-gradient(to right,rgba(10,12,18,.9),rgba(10,12,18,0))}
-    .fade-right{right:0;background:linear-gradient(to left,rgba(10,12,18,.9),rgba(10,12,18,0))}
-    .fade-edge.show{opacity:1}
-    .arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:40px;height:44px;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,var(--wb1),var(--wb2));color:#fff;border:1px solid rgba(255,255,255,.25);box-shadow:0 10px 22px rgba(122,0,204,.35);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .18s,transform .12s}
-    .arrow svg{width:18px;height:18px}
-    .arrow:active{transform:translateY(-50%) scale(.98)}
-    .arrow.show{opacity:1;pointer-events:auto}
-    .arrow.left{left:6px}.arrow.right{right:6px}
-
-    a.product{color:inherit;text-decoration:none}
-    .product{display:flex;flex-direction:column;scroll-snap-align:start;min-width:240px;max-width:240px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--stroke);border-radius:16px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.3)}
-    .product .pic{position:relative;width:100%;aspect-ratio:3/4;background:#0f1320}
-    .product .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .product .body{display:flex;flex-direction:column;padding:10px 10px 12px;flex:1}
-    .product .name{font-weight:800;font-size:14px;line-height:1.25;margin:0 0 10px;white-space:normal}
-    .product .actions{margin-top:auto;display:flex}
-    .btn.wb{width:100%;padding:12px 14px;border-radius:12px;font-size:14px;background:linear-gradient(135deg,var(--wb1),var(--wb2));color:#fff;box-shadow:0 10px 22px rgba(122,0,204,.35)}
-
-    .product.promo .pic{background:
-      radial-gradient(120% 100% at 10% 0%,rgba(106,0,255,.45),transparent 60%),
-      radial-gradient(120% 100% at 100% 20%,rgba(63,124,255,.45),transparent 60%),
-      linear-gradient(135deg,#0b1020 0%,#10152b 100%);
-      display:flex;align-items:center;justify-content:center;text-align:center;padding:14px}
-    .promo-text{color:#e8ecff;font-weight:800;letter-spacing:.2px;line-height:1.25;font-size:15px}
-    .promo-text small{display:block;color:#b8c2e8;font-weight:700;margin-top:6px;font-size:12px}
-
-    .wb-outer{display:flex;justify-content:center;margin:12px 6px 4px}
-    .btn.wb-outline{
-      width:100%;max-width:560px;border:2px solid transparent;
-      background:
-        linear-gradient(#0a0c12,#0a0c12) padding-box,
-        linear-gradient(135deg,var(--wb1),var(--wb2)) border-box;
-      color:#fff;padding:12px 16px;border-radius:14px;font-weight:800;
-      font-size:clamp(13px,3.3vw,16px);line-height:1.15;text-align:center;
-      box-shadow:0 12px 26px rgba(122,0,204,.25)
-    }
-
-    .footer{color:var(--muted);font-size:12px;padding:20px 20px 28px;text-align:center}
-
-    /* Плашка «До конца октября» для МТС */
-    .deal-wrap{padding:0 10px;margin-top:6px}
-    .deal-badge{
-      display:flex;align-items:center;justify-content:center;gap:8px;
-      width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-      border-radius:999px;padding:8px 14px;font-weight:800;font-size:13px;
-      color:#fff;background:linear-gradient(135deg,#ff7a35,#ff9841);
-      box-shadow:0 8px 20px rgba(255,122,0,.25),inset 0 1px 0 rgba(255,255,255,.22);
-      animation:floatY 3.8s ease-in-out infinite
-    }
-    .deal-badge .ping{position:relative;width:10px;height:10px;border-radius:50%;background:#fff}
-    .deal-badge .ping::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,255,255,.55);animation:ping 1.8s ease-out infinite}
-    @keyframes ping{0%{transform:scale(.65);opacity:.75}75%{transform:scale(1.6);opacity:0}100%{opacity:0}}
-    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-
-    /* --- Партнёрская секция --- */
-    .partner-wrap{
-      margin-top:16px;border:1px solid rgba(255,255,255,.10);border-radius:22px;
-      padding:16px 12px 18px;
-      background:linear-gradient(180deg,rgba(255,165,90,.06),rgba(255,165,90,.03));
-      box-shadow:0 18px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05)
-    }
-    .partner-head h2{margin:0 6px 6px;color:#cfe2ff;font-weight:800;font-size:clamp(18px,5.2vw,24px)}
-    .partner-sub{margin:0 6px 12px;color:#9fb0d7;font-size:13.5px}
-    .partner-points{display:flex;flex-wrap:wrap;gap:8px;margin:0 6px 14px;padding:0;list-style:none}
-    .partner-points li{
-      display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;
-      font-weight:800;font-size:12.5px;color:#fff;
-      background:linear-gradient(135deg,rgba(255,122,53,.20),rgba(255,152,65,.26));
-      border:1px solid rgba(255,255,255,.12)
-    }
-    .partner-points svg{width:14px;height:14px;color:#ffd9b0}
-    .partner-cta-row{display:flex;justify-content:center;margin:6px 6px 6px}
-    .btn.partner-cta{
-      position:relative;width:100%;max-width:560px;border-radius:14px;
-      padding:12px 16px;font-weight:800;font-size:clamp(13px,3.3vw,16px);
-      background:linear-gradient(135deg,#ff7a35,#ff9841);color:#1e0c05;
-      box-shadow:0 12px 26px rgba(255,122,53,.25)
-    }
-    .partner-wrap.inview .btn.partner-cta::after{
-      content:"";position:absolute;inset:-2px;border-radius:inherit;
-      box-shadow:0 0 0 0 rgba(255,152,65,.40),0 0 0 0 rgba(255,152,65,.22);
-      animation:ring 5s ease-out infinite
-    }
-    @keyframes ring{
-      0%{box-shadow:0 0 0 0 rgba(255,152,65,.40),0 0 0 0 rgba(255,152,65,.22)}
-      55%{box-shadow:0 0 0 12px rgba(255,152,65,0),0 0 0 24px rgba(255,152,65,0)}
-      100%{box-shadow:0 0 0 0 rgba(255,152,65,0),0 0 0 0 rgba(255,152,65,0)}
-    }
-    @media (prefers-reduced-motion:reduce){
-      .partner-wrap.inview .btn.partner-cta::after{animation:none!important}
-    }
-
-    .partner-acc{margin:10px 6px 0}
-    .partner-acc summary{
-      list-style:none;cursor:pointer;user-select:none;
-      padding:12px 14px;border-radius:12px;
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.10);
-      color:#e8eeff;font-weight:800;display:flex;align-items:center;justify-content:space-between
-    }
-    .partner-acc summary::-webkit-details-marker{display:none}
-    .partner-acc .chev{transition:transform .18s}
-    .partner-acc[open] .chev{transform:rotate(180deg)}
-    .partner-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
-    .partner-steps figure{margin:0;border:1px solid var(--stroke);border-radius:16px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));box-shadow:0 12px 28px rgba(0,0,0,.24)}
-    .partner-steps img{width:100%;height:auto;display:block}
-    .partner-steps figcaption{padding:10px 12px;font-size:13px;color:#dbe3ff;font-weight:700}
-
-    /* Мобильные правки */
-    @media (max-width:520px){
-      .wrap{padding:18px}
-      .scroller{margin-inline:-10px}
-      .rail{padding:8px 10px 10px;gap:10px}
-      .arrow{width:34px;height:38px}
-      .fade-edge{width:28px}
-      .product{
-        min-width:calc((100vw - 20px - 2*10px)/2.5);
-        max-width:calc((100vw - 20px - 2*10px)/2.5);
-        border-radius:12px
-      }
-      .product .body{padding:8px}
-      .product .name{font-size:12px;margin-bottom:6px}
-      .btn.wb{font-size:11.5px;padding:8px 6px;border-radius:10px}
-      .section-title{font-size:18px;margin:0 6px 6px}
-      .section-note{font-size:11.5px}
-
-      .deal-wrap{padding:0 8px;margin-top:6px}
-      .deal-badge{padding:6px 10px;font-size:11.5px;gap:6px}
-      .deal-badge .ping{width:8px;height:8px}
-      .deal-badge .ping::after{inset:-5px;border-width:1.5px}
-
-      .btn.partner-cta{width:100%}
-    }
-  </style>
+  The meta refresh only runs without JavaScript, so it can never cut the
+  JavaScript redirect short on a slow connection. A static meta refresh cannot
+  copy the query, so it always goes to /sim/?src=qr (without JavaScript the
+  landing button carries #site anyway: a known limit).
+-->
+<noscript><meta http-equiv="refresh" content="0; url=https://simhub.market/sim/?src=qr"></noscript>
+<style>
+:root{--bg:#090b13;--text:#f4f6ff;--muted:#aab5d4;--green:#1dd889;--green-ink:#052718;--line:rgba(255,255,255,.22)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;text-align:center}
+main{width:100%;max-width:360px}
+h1{margin:0 0 10px;font-size:24px;line-height:1.2}
+p{margin:0 0 20px;color:var(--muted)}
+a{display:block;padding:16px 18px;border-radius:16px;font-weight:800;text-decoration:none}
+.go{background:var(--green);color:var(--green-ink)}
+.tg{margin-top:12px;border:1px solid var(--line);color:var(--text)}
+</style>
 </head>
 <body>
-  <div class="bg"></div>
+<main>
+  <h1>Страница активации переехала</h1>
+  <p id="msg">Сейчас откроется новый адрес. Если этого не случилось, нажмите кнопку.</p>
+  <a class="go" id="go" href="https://simhub.market/sim/?src=qr">Открыть страницу активации</a>
+  <a class="tg" id="tg" href="https://t.me/SIMHUB_ACTIV?text=%D0%A5%D0%BE%D1%87%D1%83%20%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20SIM-%D0%BA%D0%B0%D1%80%D1%82%D1%83%20%23qr">Написать сразу в Telegram @SIMHUB_ACTIV</a>
+</main>
+<script>
+(function(){
+  var target='https://simhub.market/sim/';
+  var ok={qr:1,site:1,wb:1,ozon:1,partner:1};
+  var s=location.search;
+  var m=/[?&]src=([^&#]*)/.exec(s);
+  var src='qr';
+  if(m&&ok[m[1]]===1){src=m[1];}
+  else{
+    var parts=s.replace(/^\?/,'').split('&'),keep=[],i;
+    for(i=0;i<parts.length;i++){if(parts[i]&&parts[i].split('=')[0]!=='src')keep.push(parts[i]);}
+    keep.push('src=qr');
+    s='?'+keep.join('&');
+  }
+  var url=target+s+location.hash;
+  document.getElementById('go').href=url;
+  var tg=document.getElementById('tg');
+  tg.href=tg.href.replace(/%23qr$/,'%23'+src);
 
-  <header class="wrap header">
-    <div class="brand">
-      <div class="avatar">
-        <img src="https://files.salebot.pro/uploads/message_files/f9fc0e5f2651ef2489fe06a329000c4f1c2c315974d856425a015c96c95f4c68.jpg" alt="SIMHUB консультант" loading="eager">
-      </div>
-      <div class="titles">
-        <h1>Активация SIM-карты</h1>
-        <p class="subtitle">Для заказов с <strong>Wildberries</strong> и <strong>OZON</strong></p>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <!-- CTA -->
-    <section class="cta-card">
-      <p class="lead">Чтобы активировать SIM-карту, купленную на <b>Wildberries</b> и <b>OZON</b>, нажмите кнопку ниже</p>
-      <a class="btn cta" href="https://t.me/m/jLcwytf1MzIy" target="_blank" rel="noopener" aria-label="Перейти в Telegram для активации">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 3.01c-.33.01-.66.1-.96.25L3.73 11.1c-1.69.77-1.59 2.26.27 2.86l4.78 1.55 1.84 5.9c.33 1.05 1.68 1.18 2.3.22l2.62-4.04 5.08 3.75c.92.68 2.2.17 2.44-.95l3.38-15.7C26.77 2.58 24.91 1.7 22 3.01z" fill="currentColor"/></svg>
-        Хочу активировать SIM-карту
-      </a>
-      <p class="micro">Переход в Telegram для быстрой активации.</p>
-    </section>
-
-    <!-- Витрина -->
-    <section class="market-wrap">
-      <h2 class="section-title">Наша линейка тарифов</h2>
-      <p class="section-note">Мини-витрина с быстрыми ссылками на WB</p>
-
-      <div class="scroller">
-        <div class="fade-edge fade-left" aria-hidden="true"></div>
-        <div class="fade-edge fade-right" aria-hidden="true"></div>
-
-        <button class="arrow left" aria-label="Листать влево">
-          <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
-        </button>
-        <button class="arrow right" aria-label="Листать вправо">
-          <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z" fill="currentColor"/></svg>
-        </button>
-
-        <div class="rail" id="rail" aria-label="Список тарифов, листайте вправо">
-          <!-- МТС + плашка -->
-          <a class="product" href="https://www.wildberries.ru/catalog/300618366/detail.aspx?size=456790759" target="_blank" rel="noopener" aria-label="Сим карта МТС — открыть на Wildberries">
-            <div class="pic">
-              <img src="https://files.salebot.pro/uploads/message_files/e46316bbc0f829cbcdb07bd5d28933b2b4cc48aa494ac12d2131fb6fe5e76600.JPEG" alt="Сим карта МТС Полный Безлимитный интернет без ограничений">
-            </div>
-            <div class="deal-wrap">
-              <div class="deal-badge" role="note" aria-label="Тариф доступен до конца октября">
-                <span class="ping" aria-hidden="true"></span>
-                <span>До конца октября</span>
-              </div>
-            </div>
-            <div class="body">
-              <h3 class="name">Сим карта МТС Полный Безлимитный интернет без ограничений</h3>
-              <div class="actions"><span class="btn wb">Заказать на WB</span></div>
-            </div>
-          </a>
-
-          <a class="product" href="https://www.wildberries.ru/catalog/300618359/detail.aspx?size=456790752" target="_blank" rel="noopener" aria-label="Сим карта YOTA — открыть на Wildberries">
-            <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/c8d262a268e6715acbf9e718f99eb8b67236887bfe1f27ef127d9efd5fcd2901.jpg" alt="Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением"></div>
-            <div class="body"><h3 class="name">Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
-          </a>
-
-          <a class="product" href="https://www.wildberries.ru/catalog/300619906/detail.aspx?size=456792371" target="_blank" rel="noopener" aria-label="Сим карта Т2 — открыть на Wildberries">
-            <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/114c6f07c149efec106ccd1784193c8e21bad1e7f559e98203d5fdbc29e12d23.jpg" alt="Сим карта Т2. Безлимитный интернет с ограничением"></div>
-            <div class="body"><h3 class="name">Сим карта Т2. Безлимитный интернет с ограничением</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
-          </a>
-
-          <a class="product" href="https://www.wildberries.ru/catalog/300618361/detail.aspx?size=456790754" target="_blank" rel="noopener" aria-label="Сим карта Билайн — открыть на Wildberries">
-            <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/b40f390524df1fee15fa3af896b5de5c124f1bb2c7442c506b2981e6e3550b6f.jpg" alt="Сим карта Билайн. Безлимитный интернет с ограничением"></div>
-            <div class="body"><h3 class="name">Сим карта Билайн. Безлимитный интернет с ограничением</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
-          </a>
-
-          <a class="product" href="https://www.wildberries.ru/catalog/432671801/detail.aspx?targetUrl=EX" target="_blank" rel="noopener" aria-label="Сим карта Мегафон — открыть на Wildberries">
-            <div class="pic"><img src="https://files.salebot.pro/uploads/message_files/065a652c8e030f6b1a1ebc685775fbd4db74bf870c92a001abea8f338aa536a1.jpg" alt="Сим карта Мегафон. Официальный тариф"></div>
-            <div class="body"><h3 class="name">Сим карта Мегафон. Официальный тариф</h3><div class="actions"><span class="btn wb">Заказать на WB</span></div></div>
-          </a>
-
-          <a class="product promo" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener" aria-label="Вся линейка тарифов на Wildberries">
-            <div class="pic"><div class="promo-text">Смотреть всю нашу линейку тарифов на Wildberries<small>Нажмите — откроется полный список</small></div></div>
-            <div class="body"><h3 class="name">Вся линейка тарифов — на Wildberries</h3><div class="actions"><span class="btn wb">Перейти на WB</span></div></div>
-          </a>
-        </div>
-      </div>
-
-      <div class="wb-outer">
-        <a class="btn wb-outline" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">Смотреть всю нашу линейку тарифов на Wildberries</a>
-      </div>
-    </section>
-
-    <!-- Партнёрская программа -->
-    <section class="partner-wrap" id="partners">
-      <div class="partner-head">
-        <h2>Партнёрская программа SIMHUB</h2>
-        <p class="partner-sub">Зарабатывайте на продаже номеров и пополнениях — <b>без вложений</b>.</p>
-      </div>
-
-      <ul class="partner-points">
-        <li>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-          Доступ к базе <b>260 000</b> номеров
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-          Бесплатные SIM-карты
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
-          Комиссия 40–55% с первого пополнения
-        </li>
-      </ul>
-
-      <div class="partner-cta-row">
-        <a class="btn partner-cta" href="https://reg.agsvyazi.ru/bW1vJDrdbn/?utm_source=simhub-site&utm_medium=cta&utm_campaign=partners" target="_blank" rel="noopener" aria-label="Перейти к регистрации в партнёрской программе">Хочу стать партнёром</a>
-      </div>
-
-      <details class="partner-acc">
-        <summary>Как это работает? <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 10l5 5 5-5H7z"/></svg></summary>
-        <div class="partner-steps">
-          <figure>
-            <img loading="lazy" decoding="async" src="https://files.salebot.pro/uploads/message_files/eea53e5ecf2bf223f941a3db62de04f94887d581206bcae5b369dcab9cbd53bb.jpg" alt="Шаг 1 — Зарегистрируйся">
-            <figcaption>Стань нашим партнером</figcaption>
-          </figure>
-          <figure>
-            <img loading="lazy" decoding="async" src="https://files.salebot.pro/uploads/message_files/2bef0ac9b89a33b2039387310b70da8f601f7eca529605d30663340f3686d2c1.jpg" alt="Шаг 2 — Получи доступ к базе">
-            <figcaption>1. Зарегистрируйся — это займёт меньше минуты</figcaption>
-          </figure>
-          <figure>
-            <img loading="lazy" decoding="async" src="https://files.salebot.pro/uploads/message_files/d30baff4c6679ff8540fc76dc2ba4dbed470da459350b7d259b2b8208d3f8db0.jpg" alt="Шаг 3 — Бесплатные SIM-карты">
-            <figcaption>2. Получи доступ к базе из 260 000 номеров</figcaption>
-          </figure>
-          <figure>
-            <img loading="lazy" decoding="async" src="https://files.salebot.pro/uploads/message_files/7a1c52e002520b8ceccbf558ddb1dcc47c14c77a2052b3446a2d4d4d50848c17.jpg" alt="Шаг 4 — Комиссия с первого пополнения">
-            <figcaption>3. Получи бесплатные SIM-карты и найди первых клиентов</figcaption>
-          </figure>
-          <figure>
-            <img loading="lazy" decoding="async" src="https://files.salebot.pro/uploads/message_files/7d1c6444175e5758174e2ba8c9359f492f047b7d483e1e94140e7b228971dda5.jpg" alt="Шаг 5 — Вывод средств">
-            <figcaption>4. Получай все деньги с продажи + <b>40–55%</b> с первого пополнения</figcaption>
-          </figure>
-          <figure>
-            <img loading="lazy" decoding="async" src="https://files.salebot.pro/uploads/message_files/08b6bcd9149d52ed8fcea808e5f9ddec88925eb1a0919f7bc71d9d7188eeb862.jpg" alt="Стань партнёром SIMHUB">
-            <figcaption>5. Выводи заработок: от 100 ₽ на телефон, от 3000 ₽ на карту</figcaption>
-          </figure>
-        </div>
-      </details>
-    </section>
-  </main>
-
-  <footer class="footer"><small>© 2025 SIMHUB · Поддержка 7/7</small></footer>
-
-  <script>
-    // внешние ссылки — в новой вкладке
-    document.querySelectorAll('a[href^="http"]').forEach(a=>{ if(!a.target){ a.target="_blank"; a.rel="noopener"; } });
-
-    // Снэпы прокрутки: 0 → середина → конец
-    const rail=document.getElementById('rail');
-    const left=document.querySelector('.arrow.left');
-    const right=document.querySelector('.arrow.right');
-    const fadeL=document.querySelector('.fade-left');
-    const fadeR=document.querySelector('.fade-right');
-    const TOL=20; let snaps=[0], stopTimer=0;
-    const getMax=()=>Math.max(0, rail.scrollWidth - rail.clientWidth);
-
-    function buildSnaps(){ const m=getMax(); snaps = m>0 ? [0, Math.round(m/2), m] : [0]; }
-    function nearestIndex(){ const x=rail.scrollLeft; let idx=0,b=1e9; for(let i=0;i<snaps.length;i++){const d=Math.abs(x-snaps[i]); if(d<b){b=d;idx=i}} return idx; }
-    function stick(){ const m=getMax(); if(rail.scrollLeft<TOL) rail.scrollLeft=0; if(rail.scrollLeft>m-TOL) rail.scrollLeft=m; }
-    function upd(){ const m=getMax(), x=rail.scrollLeft, over=m>TOL, at0=x<=TOL, atEnd=x>=m-TOL;
-      left.classList.toggle('show', over && !at0); right.classList.toggle('show', over && !atEnd);
-      fadeL.classList.toggle('show', over && !at0); fadeR.classList.toggle('show', over && !atEnd); }
-
-    function go(dir){ let idx=nearestIndex()+(dir>0?1:-1); idx=Math.max(0,Math.min(snaps.length-1,idx));
-      rail.scrollTo({left:snaps[idx],behavior:'smooth'}); setTimeout(()=>{stick();upd()},380); }
-
-    right.addEventListener('click',()=>go(1));
-    left.addEventListener('click',()=>go(-1));
-    rail.addEventListener('scroll',()=>{ clearTimeout(stopTimer); stopTimer=setTimeout(()=>{stick();upd()},120); },{passive:true});
-
-    // Центр волн на карточке = центр кнопки
-    function setCtaWaveCenter(){
-      const card=document.querySelector('.cta-card');
-      const btn=document.querySelector('.cta-card .btn.cta');
-      if(!card||!btn) return;
-      const rc=card.getBoundingClientRect();
-      const rb=btn.getBoundingClientRect();
-      const cy=((rb.top + rb.height/2) - rc.top)/rc.height*100;
-      card.style.setProperty('--cta-y', cy.toFixed(2)+'%');
-    }
-
-    // Пульсация партнёрской кнопки — только в зоне видимости + событие Plausible
-    function observePartner(){
-      const sec=document.querySelector('.partner-wrap');
-      if(!sec) return;
-      const btn=sec.querySelector('.partner-cta');
-      const io=new IntersectionObserver((ents)=>{
-        ents.forEach(e=>sec.classList.toggle('inview', e.isIntersecting));
-      },{threshold:.5});
-      io.observe(sec);
-      if(btn){
-        btn.addEventListener('click',()=>{ if(window.plausible){ try{ window.plausible('partner_cta_click'); }catch(e){} }});
-      }
-    }
-
-    function init(){
-      buildSnaps(); rail.scrollTo({left:0,behavior:'auto'}); stick(); upd();
-      rail.querySelectorAll('img').forEach(img=>{ if(!img.complete) img.addEventListener('load',()=>{buildSnaps();stick();upd();},{once:true}); });
-      requestAnimationFrame(upd);
-
-      setCtaWaveCenter();
-      setTimeout(setCtaWaveCenter,150);
-      setTimeout(setCtaWaveCenter,400);
-      window.addEventListener('resize',setCtaWaveCenter,{passive:true});
-      window.addEventListener('orientationchange',()=>setTimeout(setCtaWaveCenter,300));
-
-      observePartner();
-    }
-    window.addEventListener('load',init);
-    window.addEventListener('pageshow',init);
-    window.addEventListener('resize',()=>{buildSnaps();stick();upd();});
-    window.addEventListener('orientationchange',()=>setTimeout(()=>{buildSnaps();stick();upd();},300));
-  </script>
+  var done=false;
+  function stay(){
+    if(done)return;done=true;
+    document.getElementById('msg').textContent='Новый адрес сейчас не открывается. Напишите нам в Telegram — сообщение уже будет написано, просто отправьте его.';
+  }
+  var probe=new Image();
+  probe.onload=function(){if(done)return;done=true;location.replace(url);};
+  probe.onerror=stay;
+  setTimeout(stay,8000);
+  probe.src=target+'img/avatar.webp';
+})();
+</script>
 </body>
 </html>

@@ -9,28 +9,43 @@
 <!--
   Old address. Printed QR codes open tieeefdr.github.io/simhub-site/, so this
   page (also served as 404.html for any old path such as /SIM/) sends people on
-  to https://simhub.market/sim/ with the same query. A scan has no referrer:
-  then src=qr is added unless the query already has an allowed src, because
-  after this hop the new page sees github.io as the referrer and could not tell.
+  to https://simhub.market/sim/ with the same query.
+
+  Source tag: nothing but a printed QR leads here, so every arrival without an
+  allowed src gets src=qr, whatever the referrer. (Android opens scans from
+  Google Lens or the Google app with an android-app:// referrer, and a
+  dynamic-QR service may show its own page first: a referrer test would turn
+  those scans into #site.)
+
+  Domain safety: simhub.market has been blocked before. Before leaving, the
+  script loads one small picture from it. Only if that works does it go on
+  with location.replace. If it fails or takes too long, the buyer stays here,
+  where the direct Telegram button works without simhub.market.
+
   The meta refresh only runs without JavaScript, so it can never cut the
-  JavaScript redirect short on a slow connection.
+  JavaScript redirect short on a slow connection. A static meta refresh cannot
+  copy the query, so it always goes to /sim/?src=qr (without JavaScript the
+  landing button carries #site anyway: a known limit).
 -->
-<noscript><meta http-equiv="refresh" content="0; url=https://simhub.market/sim/"></noscript>
+<noscript><meta http-equiv="refresh" content="0; url=https://simhub.market/sim/?src=qr"></noscript>
 <style>
-:root{--bg:#090b13;--text:#f4f6ff;--muted:#aab5d4;--green:#1dd889;--green-ink:#052718}
+:root{--bg:#090b13;--text:#f4f6ff;--muted:#aab5d4;--green:#1dd889;--green-ink:#052718;--line:rgba(255,255,255,.22)}
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;text-align:center}
-main{max-width:360px}
+main{width:100%;max-width:360px}
 h1{margin:0 0 10px;font-size:24px;line-height:1.2}
 p{margin:0 0 20px;color:var(--muted)}
-a{display:block;padding:16px 18px;border-radius:16px;background:var(--green);color:var(--green-ink);font-weight:800;text-decoration:none}
+a{display:block;padding:16px 18px;border-radius:16px;font-weight:800;text-decoration:none}
+.go{background:var(--green);color:var(--green-ink)}
+.tg{margin-top:12px;border:1px solid var(--line);color:var(--text)}
 </style>
 </head>
 <body>
 <main>
   <h1>Страница активации переехала</h1>
-  <p>Сейчас откроется новый адрес. Если этого не случилось, нажмите кнопку.</p>
-  <a id="go" href="https://simhub.market/sim/">Открыть страницу активации</a>
+  <p id="msg">Сейчас откроется новый адрес. Если этого не случилось, нажмите кнопку.</p>
+  <a class="go" id="go" href="https://simhub.market/sim/?src=qr">Открыть страницу активации</a>
+  <a class="tg" id="tg" href="https://t.me/SIMHUB_ACTIV?text=%D0%A5%D0%BE%D1%87%D1%83%20%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20SIM-%D0%BA%D0%B0%D1%80%D1%82%D1%83%20%23qr">Написать сразу в Telegram @SIMHUB_ACTIV</a>
 </main>
 <script>
 (function(){
@@ -38,7 +53,9 @@ a{display:block;padding:16px 18px;border-radius:16px;background:var(--green);col
   var ok={qr:1,site:1,wb:1,ozon:1,partner:1};
   var s=location.search;
   var m=/[?&]src=([^&#]*)/.exec(s);
-  if(!document.referrer&&!(m&&ok[m[1]]===1)){
+  var src='qr';
+  if(m&&ok[m[1]]===1){src=m[1];}
+  else{
     var parts=s.replace(/^\?/,'').split('&'),keep=[],i;
     for(i=0;i<parts.length;i++){if(parts[i]&&parts[i].split('=')[0]!=='src')keep.push(parts[i]);}
     keep.push('src=qr');
@@ -46,7 +63,19 @@ a{display:block;padding:16px 18px;border-radius:16px;background:var(--green);col
   }
   var url=target+s+location.hash;
   document.getElementById('go').href=url;
-  location.replace(url);
+  var tg=document.getElementById('tg');
+  tg.href=tg.href.replace(/%23qr$/,'%23'+src);
+
+  var done=false;
+  function stay(){
+    if(done)return;done=true;
+    document.getElementById('msg').textContent='Новый адрес сейчас не открывается. Напишите нам в Telegram — сообщение уже будет написано, просто отправьте его.';
+  }
+  var probe=new Image();
+  probe.onload=function(){if(done)return;done=true;location.replace(url);};
+  probe.onerror=stay;
+  setTimeout(stay,8000);
+  probe.src=target+'img/avatar.webp';
 })();
 </script>
 </body>

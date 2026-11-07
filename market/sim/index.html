@@ -100,13 +100,15 @@ img{display:block;max-width:100%}
 
 /* Tariffs: a swipe rail on phones, a row on wide screens */
 .rail{
+  list-style:none;
   display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
   margin:16px calc(-1 * var(--gutter)) 0;padding:2px var(--gutter) 10px;scroll-padding:0 var(--gutter);
   scrollbar-width:none;-webkit-overflow-scrolling:touch;
 }
 .rail::-webkit-scrollbar{display:none}
+.rail>li{flex:0 0 clamp(146px,42vw,220px);scroll-snap-align:start;display:flex}
 .product{
-  flex:0 0 clamp(146px,42vw,220px);scroll-snap-align:start;
+  flex:1;min-width:0;
   display:flex;flex-direction:column;text-decoration:none;
   background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;
   transition:border-color .15s;
@@ -202,7 +204,8 @@ details[open] summary svg{transform:rotate(180deg)}
     (function(){
       var ok={qr:1,site:1,wb:1,ozon:1,partner:1};
       var m=/[?&]src=([^&#]*)/.exec(location.search);
-      var src=(m&&ok[m[1]]===1)?m[1]:(document.referrer?'site':'qr');
+      // A scan has no web referrer: none at all, or android-app://… when Google Lens or the Google app opens it.
+      var src=(m&&ok[m[1]]===1)?m[1]:(/^https?:/i.test(document.referrer)?'site':'qr');
       var a=document.getElementById('go');
       a.href=a.href.replace(/%23site$/,'%23'+src);
     })();
@@ -214,28 +217,28 @@ details[open] summary svg{transform:rotate(180deg)}
     <h2 id="t">Наша линейка тарифов</h2>
     <p class="sub">Карточки ведут на Wildberries</p>
 
-    <div class="rail" role="list">
-      <a class="product" role="listitem" href="https://www.wildberries.ru/catalog/300618366/detail.aspx?size=456790759" target="_blank" rel="noopener">
+    <ul class="rail" role="list">
+      <li><a class="product" href="https://www.wildberries.ru/catalog/300618366/detail.aspx?size=456790759" target="_blank" rel="noopener">
         <div class="pic"><img src="img/tariff-mts.webp" width="480" height="640" loading="lazy" decoding="async" alt="Сим карта МТС: 700 минут, 700 СМС, 500 ₽"></div>
         <div class="body"><h3>Сим карта МТС Полный Безлимитный интернет без ограничений</h3><span class="go">Заказать на WB</span></div>
-      </a>
-      <a class="product" role="listitem" href="https://www.wildberries.ru/catalog/300618359/detail.aspx?size=456790752" target="_blank" rel="noopener">
+      </a></li>
+      <li><a class="product" href="https://www.wildberries.ru/catalog/300618359/detail.aspx?size=456790752" target="_blank" rel="noopener">
         <div class="pic"><img src="img/tariff-yota.webp" width="480" height="640" loading="lazy" decoding="async" alt="Сим карта YOTA, тариф «МОЖНО»"></div>
         <div class="body"><h3>Сим карта YOTA Тариф «МОЖНО». Безлимитный интернет с ограничением</h3><span class="go">Заказать на WB</span></div>
-      </a>
-      <a class="product" role="listitem" href="https://www.wildberries.ru/catalog/300619906/detail.aspx?size=456792371" target="_blank" rel="noopener">
+      </a></li>
+      <li><a class="product" href="https://www.wildberries.ru/catalog/300619906/detail.aspx?size=456792371" target="_blank" rel="noopener">
         <div class="pic"><img src="img/tariff-t2.webp" width="480" height="640" loading="lazy" decoding="async" alt="Сим карта Т2"></div>
         <div class="body"><h3>Сим карта Т2. Безлимитный интернет с ограничением</h3><span class="go">Заказать на WB</span></div>
-      </a>
-      <a class="product" role="listitem" href="https://www.wildberries.ru/catalog/300618361/detail.aspx?size=456790754" target="_blank" rel="noopener">
+      </a></li>
+      <li><a class="product" href="https://www.wildberries.ru/catalog/300618361/detail.aspx?size=456790754" target="_blank" rel="noopener">
         <div class="pic"><img src="img/tariff-beeline.webp" width="480" height="640" loading="lazy" decoding="async" alt="Сим карта Билайн"></div>
         <div class="body"><h3>Сим карта Билайн. Безлимитный интернет с ограничением</h3><span class="go">Заказать на WB</span></div>
-      </a>
-      <a class="product" role="listitem" href="https://www.wildberries.ru/catalog/432671801/detail.aspx?targetUrl=EX" target="_blank" rel="noopener">
+      </a></li>
+      <li><a class="product" href="https://www.wildberries.ru/catalog/432671801/detail.aspx?targetUrl=EX" target="_blank" rel="noopener">
         <div class="pic"><img src="img/tariff-megafon.webp" width="480" height="640" loading="lazy" decoding="async" alt="Сим карта МегаФон"></div>
         <div class="body"><h3>Сим карта Мегафон. Официальный тариф</h3><span class="go">Заказать на WB</span></div>
-      </a>
-    </div>
+      </a></li>
+    </ul>
 
     <a class="all" href="https://www.wildberries.ru/brands/312164159-simhub/sim-karty" target="_blank" rel="noopener">
       Смотреть всю нашу линейку тарифов на Wildberries

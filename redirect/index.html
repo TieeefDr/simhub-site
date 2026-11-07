@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Активация SIM-карты | SIMHUB</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://simhub.market/sim/">
+<!--
+  Old address. Printed QR codes open tieeefdr.github.io/simhub-site/, so this
+  page (also served as 404.html for any old path such as /SIM/) sends people on
+  to https://simhub.market/sim/ with the same query. A scan has no referrer:
+  then src=qr is added unless the query already has an allowed src, because
+  after this hop the new page sees github.io as the referrer and could not tell.
+  The meta refresh only runs without JavaScript, so it can never cut the
+  JavaScript redirect short on a slow connection.
+-->
+<noscript><meta http-equiv="refresh" content="0; url=https://simhub.market/sim/"></noscript>
+<style>
+:root{--bg:#090b13;--text:#f4f6ff;--muted:#aab5d4;--green:#1dd889;--green-ink:#052718}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;text-align:center}
+main{max-width:360px}
+h1{margin:0 0 10px;font-size:24px;line-height:1.2}
+p{margin:0 0 20px;color:var(--muted)}
+a{display:block;padding:16px 18px;border-radius:16px;background:var(--green);color:var(--green-ink);font-weight:800;text-decoration:none}
+</style>
+</head>
+<body>
+<main>
+  <h1>Страница активации переехала</h1>
+  <p>Сейчас откроется новый адрес. Если этого не случилось, нажмите кнопку.</p>
+  <a id="go" href="https://simhub.market/sim/">Открыть страницу активации</a>
+</main>
+<script>
+(function(){
+  var target='https://simhub.market/sim/';
+  var ok={qr:1,site:1,wb:1,ozon:1,partner:1};
+  var s=location.search;
+  var m=/[?&]src=([^&#]*)/.exec(s);
+  if(!document.referrer&&!(m&&ok[m[1]]===1)){
+    var parts=s.replace(/^\?/,'').split('&'),keep=[],i;
+    for(i=0;i<parts.length;i++){if(parts[i]&&parts[i].split('=')[0]!=='src')keep.push(parts[i]);}
+    keep.push('src=qr');
+    s='?'+keep.join('&');
+  }
+  var url=target+s+location.hash;
+  document.getElementById('go').href=url;
+  location.replace(url);
+})();
+</script>
+</body>
+</html>
